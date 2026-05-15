@@ -1,0 +1,274 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Классический темный фон */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 100%;
+  max-width: 1150px; /* Увеличил ширину для большего пространства */
+  max-height: 85vh;
+  border-radius: 32px; /* Чуть более выразительное скругление */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { transform: scale(0.98); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 30px; /* Увеличил отступы кнопки */
+  right: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  color: var(--color-secondary);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: #fff;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .modal-body {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .modal-content {
+    max-width: 700px;
+    max-height: 90vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-content {
+    border-radius: 24px;
+  }
+
+  .modal-close {
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+
+  .modal-image-section {
+    padding: 20px;
+  }
+
+  .modal-info-section {
+    padding: 30px 20px;
+  }
+
+  .modal-title {
+    font-size: 1.8rem;
+  }
+
+  .modal-description {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .modal-additional-info {
+    padding-top: 25px;
+    margin-bottom: 35px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding-top: 20px;
+  }
+
+  .modal-price-container {
+    align-items: center;
+  }
+
+  .modal-add-btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+.modal-image-section {
+  flex: 1.2;
+  background-color: #fcfcfc;
+  padding: 50px 20px 50px 50px; /* Уменьшил правый отступ до 20px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  max-height: 65vh;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.modal-info-section {
+  flex: 1;
+  padding: 70px 60px 70px 20px; /* Уменьшил левый отступ до 20px */
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.modal-header-info {
+  margin-bottom: 35px; /* Больше места до описания */
+}
+
+.modal-title {
+  font-size: 2.5rem; /* Немного увеличил размер */
+  color: var(--color-secondary);
+  margin: 0 0 12px 0;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.modal-weight {
+  color: var(--color-accent-gray);
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.modal-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 50px; /* Больше места до доп. инфо */
+}
+
+.modal-additional-info {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 35px;
+  margin-bottom: 50px; /* Больше места до футера */
+}
+
+.modal-additional-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px; /* Уменьшил с 15px */
+  color: var(--color-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal-additional-info p {
+  color: #777;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  margin-top: auto;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.modal-price-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-price-label {
+  font-size: 0.8rem;
+  color: var(--color-accent-gray);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.modal-price-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.modal-add-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 20px 50px; /* Большая, просторная кнопка */
+  border-radius: 100px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-add-btn:hover {
+  filter: brightness(1.1);
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    width: 100%;
+    min-height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal-body {
+    flex: 1;
+    min-height: 0;
+  }
+}

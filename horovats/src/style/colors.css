@@ -1,0 +1,21 @@
+:root {
+  /* Оставляем старую палитру для переиспользования */
+  --color-brand-bg: #d6d0c6; 
+  --color-primary: #4a152c;
+  --color-secondary: #3c3c3b;
+  --color-accent-gray: #8e8e8e;
+  
+  /* Новый основной фон сайта */
+  --color-site-bg: #efebe3; /* или #fdfdfd для легкого оттенка */
+  
+  --font-main: 'Inter', sans-serif;
+  --transition: all 0.3s ease;
+  --container-width: 1680px;
+  --card-width: 325px;
+}
+
+@media (max-width: 400px) {
+  :root {
+    --card-width: calc(100vw - 40px);
+  }
+}

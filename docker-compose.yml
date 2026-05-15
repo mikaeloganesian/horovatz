@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://json.schemastore.org/docker-compose.json
+#
+# Если подсказка всё ещё ругается — это сеть/расширение YAML; на работу compose не влияет.
+
+services:
+  backend:
+    build:
+      context: ./horovats-backend
+      dockerfile: Dockerfile
+    container_name: horovats-backend
+    restart: unless-stopped
+    environment:
+      GIN_MODE: release
+      # Разрешить браузеру ходить к API напрямую (другой порт/домен), если нужно
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+      ADMIN_BOOTSTRAP_EMAIL: ${ADMIN_BOOTSTRAP_EMAIL:-}
+      ADMIN_BOOTSTRAP_PASSWORD: ${ADMIN_BOOTSTRAP_PASSWORD:-}
+      JWT_SECRET: ${JWT_SECRET:-}
+      SMSC_LOGIN: ${SMSC_LOGIN:-}
+      SMSC_PASSWORD: ${SMSC_PASSWORD:-}
+      SMSC_API_KEY: ${SMSC_API_KEY:-}
+      SMSC_PHONES: ${SMSC_PHONES:-}
+    volumes:
+      - backend-data:/app/data
+    working_dir: /app/data
+    command: ["/app/server"]
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  web:
+    build:
+      context: ./horovats
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-/api}
+    container_name: horovats-web
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  backend-data:

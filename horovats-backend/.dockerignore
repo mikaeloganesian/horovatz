@@ -1,0 +1,5 @@
+.git
+*.db
+.env
+uploads/
+*.md

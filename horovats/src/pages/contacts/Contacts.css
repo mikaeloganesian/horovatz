@@ -1,0 +1,141 @@
+.contacts-page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.contacts-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.contacts-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contacts-header p {
+  color: var(--color-accent-gray);
+  font-size: 1.1rem;
+}
+
+.contacts-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+}
+
+.contacts-text h2 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contacts-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-secondary);
+  margin-bottom: 20px;
+}
+
+.contacts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 60px;
+  max-width: 600px;
+}
+
+.contact-card {
+  padding: 20px 0;
+  text-align: left;
+  transition: var(--transition);
+  border-bottom: 1px solid rgba(74, 21, 44, 0.1);
+}
+
+.contact-card:last-child {
+  border-bottom: none;
+}
+
+.contact-card:hover {
+  transform: translateX(10px);
+}
+
+.contact-card-title {
+  color: var(--color-accent-gray);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.contact-card-value {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: block;
+  line-height: 1.2;
+}
+
+a.contact-card-value:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+a.contact-card-value:hover {
+  text-decoration: underline;
+}
+
+.map-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  background: #eee;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .contacts-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .contacts-header h1 {
+    font-size: 2rem;
+  }
+  .map-container {
+    height: 400px;
+  }
+
+  .contact-card-value {
+    font-size: 1.35rem;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-page {
+    padding: 24px 12px;
+  }
+
+  .contacts-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .map-container {
+    height: min(320px, 55vh);
+    border-radius: 16px;
+  }
+}

@@ -1,0 +1,112 @@
+.category-section {
+  margin-bottom: 40px; /* Уменьшил отступ */
+  width: 100%;
+}
+
+.category-section-title {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 5px; /* Уменьшил для подзаголовка */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0;
+}
+
+.category-section-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-accent-gray);
+  margin-bottom: 25px;
+  padding: 0;
+  font-weight: 500;
+}
+
+.category-section-scroll-container {
+  position: relative;
+  width: 100%;
+}
+
+.category-section-scroll-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  left: 0;
+  background: linear-gradient(to right, 
+    var(--color-site-bg) 0%, 
+    rgba(239, 235, 227, 0.9) 20%, 
+    rgba(239, 235, 227, 0.5) 50%, 
+    rgba(239, 235, 227, 0) 100%);
+}
+
+.category-section-scroll-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 10;
+  pointer-events: none;
+  /* Анимация убрана для правого фейда */
+  opacity: 0;
+  right: 0;
+  background: linear-gradient(to left, 
+    var(--color-site-bg) 0%, 
+    rgba(239, 235, 227, 0.9) 20%, 
+    rgba(239, 235, 227, 0.5) 50%, 
+    rgba(239, 235, 227, 0) 100%);
+}
+
+.category-section-scroll-container.has-left-fade::before {
+  opacity: 1;
+}
+
+.category-section-scroll-container.has-right-fade::after {
+  opacity: 1;
+}
+
+.category-section-scroll {
+  width: 100%;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 10px 0 20px; /* Увеличил отступы для теней */
+}
+
+.category-section-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.category-section-scroll.dragging {
+  cursor: grabbing;
+}
+
+.category-section-inner {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  padding: 0 100px 0 0; /* Отступ только справа для плавного исчезновения фейда */
+}
+
+@media (max-width: 600px) {
+  .category-section-inner {
+    gap: 16px;
+    padding: 0 48px 0 0;
+  }
+
+  .category-section-title {
+    font-size: 1.25rem;
+  }
+}
+
+.category-section-item {
+  width: var(--card-width); /* Увеличил ширину, чтобы соответствовать сетке */
+  flex-shrink: 0;
+}

@@ -1,0 +1,257 @@
+.profile-loading {
+  padding: min(100px, 20vw) 20px;
+  text-align: center;
+  color: var(--color-accent-gray);
+}
+
+.profile-page {
+  max-width: 800px;
+  margin: 40px auto 60px;
+  padding: 0 16px;
+}
+
+.profile-page h1 {
+  margin-bottom: 24px;
+}
+
+.profile-card {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 32px;
+}
+
+.profile-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-card__head h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+}
+
+.profile-btn {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.profile-btn--primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.profile-btn--success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.profile-error {
+  color: #c62828;
+  margin-bottom: 15px;
+}
+
+.profile-fields {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  align-items: center;
+}
+
+.profile-fields strong {
+  font-size: 0.9rem;
+}
+
+.profile-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+.profile-address-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.profile-address-row .profile-input {
+  flex: 1;
+  min-width: 160px;
+}
+
+.profile-map-btn {
+  padding: 0 14px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.profile-orders-title {
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.profile-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-order-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.profile-order-head {
+  background-color: #f9f9f9;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-order-head-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  min-width: 0;
+}
+
+.profile-order-meta {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.profile-order-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.profile-order-status--new {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.profile-order-status--default {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+.profile-order-body {
+  padding: 16px;
+}
+
+.profile-order-items {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-order-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-order-item img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #eee;
+  flex-shrink: 0;
+}
+
+.profile-order-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-order-item-price {
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.profile-order-footer {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-order-address {
+  color: #666;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-order-total {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .profile-page {
+    margin-top: 24px;
+  }
+
+  .profile-card {
+    padding: 18px 16px;
+  }
+
+  .profile-fields {
+    grid-template-columns: 1fr;
+    gap: 6px 0;
+  }
+
+  .profile-fields strong {
+    margin-top: 10px;
+  }
+
+  .profile-fields strong:first-child {
+    margin-top: 0;
+  }
+
+  .profile-address-row {
+    flex-direction: column;
+  }
+
+  .profile-map-btn {
+    width: 100%;
+    padding: 12px;
+  }
+}

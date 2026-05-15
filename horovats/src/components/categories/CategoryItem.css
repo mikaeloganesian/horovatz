@@ -1,0 +1,35 @@
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  gap: 0;
+}
+
+.category-item:hover {
+  border-color: var(--color-primary);
+  background-color: #f9f9f9;
+}
+
+.category-item.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.category-title {
+  font-size: 0.85rem;
+  font-weight: 500; /* Уменьшенная жирность */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.category-item.active .category-title {
+  color: #fff;
+}

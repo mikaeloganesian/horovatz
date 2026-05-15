@@ -1,0 +1,123 @@
+.loyalty-page {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.loyalty-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.loyalty-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.loyalty-header p {
+  color: var(--color-accent-gray);
+  font-size: 1.1rem;
+}
+
+.loyalty-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+}
+
+.loyalty-text h2 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.loyalty-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-secondary);
+  margin-bottom: 20px;
+}
+
+.loyalty-text p:last-child {
+  margin-bottom: 0;
+}
+
+.loyalty-notice {
+  background: rgba(74, 21, 44, 0.05);
+  border-left: 4px solid var(--color-primary);
+  padding: 20px;
+  border-radius: 0 12px 12px 0;
+  margin-top: 20px;
+}
+
+.loyalty-notice p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.loyalty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.loyalty-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: var(--transition);
+}
+
+.loyalty-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.loyalty-card-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.loyalty-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.loyalty-card-desc {
+  color: var(--color-accent-gray);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .loyalty-content {
+    grid-template-columns: 1fr;
+  }
+  .loyalty-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loyalty-page {
+    padding: 24px 12px;
+  }
+
+  .loyalty-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .loyalty-card-value {
+    font-size: 2.4rem;
+  }
+}
