@@ -330,6 +330,34 @@
   display: none;
 }
 
+/* Мобильный WebKit: без «ссылочного» цвета и подчёркивания у NavLink */
+@media (max-width: 992px) {
+  .mobile-nav__list a.nav-link {
+    text-decoration: none !important;
+    color: var(--color-secondary) !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav__list a.nav-link:visited,
+  .mobile-nav__list a.nav-link:active,
+  .mobile-nav__list a.nav-link:focus,
+  .mobile-nav__list a.nav-link:focus-visible {
+    color: var(--color-secondary) !important;
+    text-decoration: none !important;
+  }
+
+  .mobile-nav__list a.nav-link.active {
+    color: var(--color-secondary) !important;
+    font-weight: 700;
+  }
+
+  .mobile-nav__list a.nav-link--admin,
+  .mobile-nav__list a.nav-link--admin:visited,
+  .mobile-nav__list a.nav-link--admin:active {
+    color: var(--color-secondary) !important;
+  }
+}
+
 .mobile-nav__footer {
   padding: 16px 20px 24px;
   border-top: 1px solid var(--color-accent-gray);

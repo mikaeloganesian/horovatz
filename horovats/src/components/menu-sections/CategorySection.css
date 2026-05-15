@@ -103,6 +103,14 @@
 
   .category-section-title {
     font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--color-primary);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .category-section-subtitle {
+    text-decoration: none;
+    color: var(--color-accent-gray);
   }
 }
 

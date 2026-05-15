@@ -33,3 +33,25 @@
 .category-item.active .category-title {
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .category-item {
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    color: var(--color-secondary);
+  }
+
+  .category-title {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .category-item.active {
+    color: #fff;
+  }
+
+  .category-item.active .category-title {
+    color: #fff;
+  }
+}
