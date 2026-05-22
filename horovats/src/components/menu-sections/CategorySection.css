@@ -97,8 +97,26 @@
 
 @media (max-width: 600px) {
   .category-section-inner {
-    gap: 16px;
-    padding: 0 48px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .category-section-item {
+    width: auto;
+  }
+
+  .category-section-scroll-container::before,
+  .category-section-scroll-container::after {
+    display: none;
+  }
+
+  .category-section-scroll {
+    overflow: visible;
+    cursor: default;
+    padding: 0 0 12px;
   }
 
   .category-section-title {
@@ -111,6 +129,7 @@
   .category-section-subtitle {
     text-decoration: none;
     color: var(--color-accent-gray);
+    margin-bottom: 16px;
   }
 }
 

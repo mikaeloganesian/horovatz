@@ -14,8 +14,9 @@
   --card-width: 325px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
   :root {
-    --card-width: calc(100vw - 40px);
+    /* 2 карточки в ряд: padding контейнера (24px) + gap (12px) */
+    --card-width: calc((100vw - 36px) / 2);
   }
 }

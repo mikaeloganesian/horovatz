@@ -10,7 +10,7 @@ import './MenuPage.css';
 
 const MenuPage: FC = observer(() => {
   const { menuStore } = useStore();
-  const { categories, dishes, isLoading } = menuStore;
+  const { categories, dishes, isLoading, initialLoadDone } = menuStore;
 
   const [activeCategory, setActiveCategory] = useState('all');
   const [displayedCategory, setDisplayedCategory] = useState('all');
@@ -19,8 +19,9 @@ const MenuPage: FC = observer(() => {
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
 
   useEffect(() => {
-    menuStore.fetchCategories();
-    menuStore.fetchDishes();
+    if (!menuStore.initialLoadDone) {
+      void menuStore.bootstrap();
+    }
   }, [menuStore]);
 
   if (activeCategory !== displayedCategory && transitionClass !== 'fade-out') {
@@ -45,7 +46,7 @@ const MenuPage: FC = observer(() => {
     dish.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  if (isLoading) {
+  if (!initialLoadDone && isLoading) {
     return <div className="menu-loading">Загрузка меню...</div>;
   }
 

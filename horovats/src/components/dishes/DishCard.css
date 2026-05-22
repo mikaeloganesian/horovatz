@@ -16,33 +16,29 @@
 
 .dish-image-container {
   padding: 12px 12px 0 12px;
-  /* Убрал отступ снизу */
 }
 
 .dish-image-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 66.67%;
-  /* 3:2 Aspect Ratio */
+  aspect-ratio: 3 / 2;
   border-radius: 22px;
-  /* Закругления фото */
   overflow: hidden;
   background-color: #f5f5f5;
 }
 
 .dish-image {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.5s ease;
 }
 
 .dish-card:hover .dish-image {
   transform: scale(1.08);
-  /* Чуть усилил эффект */
 }
 
 .dish-weight {
@@ -59,13 +55,11 @@
 }
 
 .dish-info {
-  padding: 20px 20px 20px 20px;
-  /* Уменьшил верхний отступ (был 20px) */
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   min-height: 180px;
-  /* Задал минимальную высоту для контентной части */
 }
 
 .dish-title {
@@ -83,7 +77,6 @@
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  /* Оставил 3 строки для объема */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -93,6 +86,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
+  gap: 8px;
 }
 
 .dish-price {
@@ -111,6 +105,7 @@
   font-weight: 600;
   font-size: 0.85rem;
   transition: var(--transition);
+  flex-shrink: 0;
 }
 
 .btn-add-to-cart:hover {
@@ -118,30 +113,66 @@
   color: #fff;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .dish-card {
-    border-radius: 22px;
+    border-radius: 18px;
+  }
+
+  .dish-card:hover {
+    transform: none;
+    box-shadow: none;
   }
 
   .dish-image-container {
     padding: 8px 8px 0;
   }
 
+  .dish-image-wrapper {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+  }
+
+  .dish-weight {
+    bottom: 6px;
+    right: 6px;
+    padding: 2px 7px;
+    font-size: 0.65rem;
+  }
+
   .dish-info {
-    padding: 14px 14px 16px;
+    padding: 10px 10px 12px;
     min-height: 0;
   }
 
   .dish-title {
-    font-size: 1rem;
+    font-size: 0.82rem;
+    margin: 0 0 6px;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .dish-description {
+    display: none;
+  }
+
+  .dish-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
   }
 
   .dish-price {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    text-align: center;
   }
 
   .btn-add-to-cart {
-    padding: 8px 12px;
-    font-size: 0.8rem;
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 0.72rem;
+    text-align: center;
   }
 }

@@ -126,13 +126,10 @@
 }
 
 @media (max-width: 720px) {
-  .menu-dish-grid--five-cols {
+  .menu-dish-grid--five-cols,
+  .menu-dish-grid--auto-fill {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 400px) {
-  .menu-dish-grid--five-cols {
-    grid-template-columns: 1fr;
+    column-gap: 12px;
+    row-gap: 16px;
   }
 }

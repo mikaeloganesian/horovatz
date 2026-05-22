@@ -1,8 +1,11 @@
 import { type FC, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 import Header from './components/header';
 import CartSidebar from './components/cart/CartSidebar';
 import ModalRoot from './components/modals/ModalRoot';
+import LoadingScreen from './components/loading/LoadingScreen';
+import { useStore } from './context/StoreContext';
 import './App.css';
 import './style/colors.css';
 
@@ -53,26 +56,57 @@ const AnimatedRoutes: FC = () => {
   );
 };
 
-const App: FC = () => {
+const App: FC = observer(() => {
+  const { menuStore } = useStore();
+  const [splashExiting, setSplashExiting] = useState(false);
+  const [splashMounted, setSplashMounted] = useState(true);
+
+  useEffect(() => {
+    document.body.style.overflow = splashMounted ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [splashMounted]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void menuStore.bootstrap().finally(() => {
+      if (!cancelled) {
+        setSplashExiting(true);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [menuStore]);
+
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        
-        <main className="app-container">
-          <AnimatedRoutes />
-        </main>
+    <>
+      {splashMounted && (
+        <LoadingScreen
+          exiting={splashExiting}
+          onExited={() => setSplashMounted(false)}
+        />
+      )}
+      <Router>
+        <div className="App">
+          <Header />
 
-        <footer className="footer-text">
-          © 2026 ХОРОВАЦ. Premium доставка.
-        </footer>
+          <main className="app-container">
+            <AnimatedRoutes />
+          </main>
 
-        <ModalRoot />
-        <CartSidebar />
-        <AdminNewOrderAlert />
-      </div>
-    </Router>
+          <footer className="footer-text">
+            © 2026 ХОРОВАЦ. Premium доставка.
+          </footer>
+
+          <ModalRoot />
+          <CartSidebar />
+          <AdminNewOrderAlert />
+        </div>
+      </Router>
+    </>
   );
-};
+});
 
 export default App;
