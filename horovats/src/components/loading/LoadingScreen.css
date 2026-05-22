@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 16px;
   background-color: var(--color-site-bg);
   transition: opacity 0.45s ease, visibility 0.45s ease;
 }
@@ -15,12 +15,6 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-}
-
-.loading-screen__logo {
-  width: min(160px, 45vw);
-  height: auto;
-  animation: loading-logo-pulse 1.6s ease-in-out infinite;
 }
 
 .loading-screen__spinner {
@@ -43,17 +37,5 @@
 @keyframes loading-spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes loading-logo-pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: scale(0.97);
   }
 }

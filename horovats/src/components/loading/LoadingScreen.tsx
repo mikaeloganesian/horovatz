@@ -1,5 +1,4 @@
 import { type FC } from 'react';
-import logo from '../../assets/logo.png';
 import './LoadingScreen.css';
 
 type Props = {
@@ -21,7 +20,6 @@ const LoadingScreen: FC<Props> = ({ exiting, onExited }) => {
         }
       }}
     >
-      <img src={logo} alt="ХОРОВАЦ" className="loading-screen__logo" />
       <div className="loading-screen__spinner" aria-hidden />
       <span className="loading-screen__text">Загрузка меню</span>
     </div>
