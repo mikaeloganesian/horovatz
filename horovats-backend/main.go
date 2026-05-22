@@ -63,10 +63,11 @@ func main() {
 	}
 	r.Use(cors.New(corsCfg))
 
-	// Static route for images
+	// Static route for images (/uploads and /api/uploads for same-origin API prefix)
 	r.Static("/uploads", "./uploads")
 
 	api := r.Group("/api")
+	api.Static("/uploads", "./uploads")
 	{
 		// Public Auth
 		auth := api.Group("/auth")

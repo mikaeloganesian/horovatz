@@ -4,8 +4,8 @@ const rawApi = (import.meta.env.VITE_API_URL ?? 'http://localhost:8080/api').rep
 
 export const API_URL = rawApi;
 
-/** Backend origin (API base without /api) — for static uploads etc. */
-export const BASE_URL = rawApi.endsWith('/api') ? rawApi.slice(0, -4) || rawApi : rawApi;
+/** Site origin for static paths (/uploads). Empty when API is same-origin relative `/api`. */
+export const BASE_URL = rawApi.endsWith('/api') ? rawApi.slice(0, -4) : rawApi;
 
 export const $api = axios.create({
   baseURL: API_URL,

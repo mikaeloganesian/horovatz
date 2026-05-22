@@ -16,10 +16,6 @@ services:
       ADMIN_BOOTSTRAP_EMAIL: ${ADMIN_BOOTSTRAP_EMAIL:-}
       ADMIN_BOOTSTRAP_PASSWORD: ${ADMIN_BOOTSTRAP_PASSWORD:-}
       JWT_SECRET: ${JWT_SECRET:-}
-      SMSC_LOGIN: ${SMSC_LOGIN:-}
-      SMSC_PASSWORD: ${SMSC_PASSWORD:-}
-      SMSC_API_KEY: ${SMSC_API_KEY:-}
-      SMSC_PHONES: ${SMSC_PHONES:-}
     volumes:
       - backend-data:/app/data
     working_dir: /app/data
