@@ -1,6 +1,25 @@
 import { type FC } from 'react';
 import './Contacts.css';
 
+const YANDEX_EDA_RESTAURANTS = [
+  {
+    name: 'Мукузани',
+    url: 'https://eda.yandex.ru/r/mukuzani_gruzinskaa_kuhna_saslyki?placeSlug=mukuzani_b3cxm',
+  },
+  {
+    name: 'Пури & Мания',
+    url: 'https://eda.yandex.ru/r/puri_mania_gruzia_premium?placeSlug=shaurma_7dxwb',
+  },
+  {
+    name: 'Грузинская душа',
+    url: 'https://eda.yandex.ru/r/mukuzani_gruzinskaa_kuhna_saslyki?placeSlug=gruzinskaya_dusha',
+  },
+  {
+    name: 'Фестиваль хинкали',
+    url: 'https://eda.yandex.ru/r/cajhana_ip_sanoan?placeSlug=chajxana_rmdt6',
+  },
+] as const;
+
 const ContactsPage: FC = () => {
   return (
     <div className="contacts-page">
@@ -8,6 +27,13 @@ const ContactsPage: FC = () => {
         <h1 style={{ color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Контакты</h1>
         <p>Мы всегда на связи, чтобы сделать ваш день вкуснее</p>
       </header>
+
+      <section className="contacts-intro">
+        <p>
+          <strong>horovats.ru</strong> — объединение наших ресторанов. На сайте вы видите общее меню и можете
+          оформить заказ на доставку; каждый ресторан также доступен отдельно в Яндекс Еде.
+        </p>
+      </section>
 
       <section className="contacts-content">
         <div className="contacts-text">
@@ -30,12 +56,31 @@ const ContactsPage: FC = () => {
         </div>
       </section>
 
+      <section className="contacts-eda">
+        <h2 className="contacts-eda__title">Заказ в Яндекс Еде</h2>
+        <p className="contacts-eda__subtitle">Выберите ресторан и закажите напрямую в приложении:</p>
+        <ul className="contacts-eda__list">
+          {YANDEX_EDA_RESTAURANTS.map((restaurant) => (
+            <li key={restaurant.name}>
+              <a
+                href={restaurant.url}
+                className="contacts-eda__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {restaurant.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <div className="contacts-grid">
         <div className="contact-card">
           <h3 className="contact-card-title">Заказы по телефону</h3>
           <a href="tel:+79153380040" className="contact-card-value">+7 (915) 338-00-40</a>
         </div>
-        
+
         <div className="contact-card">
           <h3 className="contact-card-title">График работы</h3>
           <div className="contact-card-value">Круглосуточно 24/7</div>
@@ -50,8 +95,8 @@ const ContactsPage: FC = () => {
       </div>
 
       <div className="map-container">
-        <iframe 
-          src="https://yandex.ru/map-widget/v1/?text=Москва,+улица+Сергия+Радонежского,+29-31с4&z=16" 
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?text=Москва,+улица+Сергия+Радонежского,+29-31с4&z=16"
           allowFullScreen={true}
           loading="lazy"
           title="Карта расположения ресторана ХОРОВАЦ"

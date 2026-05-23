@@ -19,6 +19,66 @@
   font-size: 1.1rem;
 }
 
+.contacts-intro {
+  max-width: 820px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.contacts-intro p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-secondary);
+}
+
+.contacts-eda {
+  margin-bottom: 48px;
+  padding: 28px 32px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid rgba(74, 21, 44, 0.1);
+}
+
+.contacts-eda__title {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contacts-eda__subtitle {
+  color: var(--color-accent-gray);
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.contacts-eda__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.contacts-eda__link {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--color-site-bg);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contacts-eda__link:hover {
+  background: rgba(74, 21, 44, 0.08);
+  text-decoration: none;
+}
+
 .contacts-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -114,6 +174,13 @@ a.contact-card-value:hover {
   }
   .contacts-header h1 {
     font-size: 2rem;
+  }
+  .contacts-eda {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .contacts-eda__list {
+    grid-template-columns: 1fr;
   }
   .map-container {
     height: 400px;

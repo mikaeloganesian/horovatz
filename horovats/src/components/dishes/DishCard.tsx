@@ -35,7 +35,13 @@ const DishCard: FC<DishCardProps> = observer(({ id, title, description, price, w
     <div className="dish-card" onClick={onClick} style={{ cursor: 'pointer' }}>
       <div className="dish-image-container">
         <div className="dish-image-wrapper">
-          <img src={getImageUrl(imageUrl) || dishImage} alt={title} className="dish-image" />
+          <img
+            src={getImageUrl(imageUrl) || dishImage}
+            alt={title}
+            className="dish-image"
+            loading="lazy"
+            decoding="async"
+          />
           {weight && <span className="dish-weight">{weight}</span>}
         </div>
       </div>

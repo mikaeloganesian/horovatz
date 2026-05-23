@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { type FC, useState, useEffect, useMemo } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/StoreContext';
 import type { Dish } from '../../types';
@@ -23,6 +23,16 @@ const MenuPage: FC = observer(() => {
       void menuStore.bootstrap();
     }
   }, [menuStore]);
+
+  const categoryTabs = useMemo(() => {
+    const allEntry = categories.find((c) => c.id === 'all') ?? {
+      id: 'all',
+      title: 'Все позиции',
+      subtitle: 'Полный список наших блюд',
+      icon: '',
+    };
+    return [allEntry, ...categories.filter((c) => c.id !== 'all')];
+  }, [categories]);
 
   if (activeCategory !== displayedCategory && transitionClass !== 'fade-out') {
     setTransitionClass('fade-out');
@@ -71,10 +81,10 @@ const MenuPage: FC = observer(() => {
         </div>
       </section>
 
-      <CategoryList 
-        categories={categories} 
-        activeCategoryId={activeCategory} 
-        onCategoryChange={handleCategoryChange} 
+      <CategoryList
+        categories={categoryTabs}
+        activeCategoryId={activeCategory}
+        onCategoryChange={handleCategoryChange}
       />
 
       <div

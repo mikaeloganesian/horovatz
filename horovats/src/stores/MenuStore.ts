@@ -1,8 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import type { Dish, Category } from "../types";
 import $api from "../api/axios";
-import { getImageUrl } from "../utils/image";
-import { preloadImages } from "../utils/preloadImages";
 
 export default class MenuStore {
     categories: Category[] = [];
@@ -17,7 +15,7 @@ export default class MenuStore {
         makeAutoObservable(this);
     }
 
-    /** Loads menu + preloads dish images for the splash screen. */
+    /** Loads menu data; images lazy-load in the UI. */
     bootstrap(): Promise<void> {
         if (this.initialLoadDone) {
             return Promise.resolve();
@@ -41,11 +39,6 @@ export default class MenuStore {
 
             const categories = categoriesRes.data;
             const dishes = dishesRes.data;
-            const imageUrls = dishes
-                .map((d) => getImageUrl(d.imageUrl))
-                .filter((url): url is string => Boolean(url));
-
-            await preloadImages(imageUrls);
 
             runInAction(() => {
                 this.categories = categories;

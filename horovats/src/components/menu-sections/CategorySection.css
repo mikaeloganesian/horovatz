@@ -134,6 +134,33 @@
 }
 
 .category-section-item {
-  width: var(--card-width); /* Увеличил ширину, чтобы соответствовать сетке */
+  width: var(--card-width);
   flex-shrink: 0;
+}
+
+.category-section--placeholder {
+  min-height: 280px;
+}
+
+.category-section-skeleton {
+  margin-top: 8px;
+  min-height: 220px;
+  border-radius: 18px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.07) 50%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: category-section-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes category-section-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
