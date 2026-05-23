@@ -1,0 +1,126 @@
+.map-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 16px;
+}
+
+.map-picker-modal {
+  width: min(800px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.map-picker-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-picker-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+}
+
+.map-picker-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  color: var(--color-accent-gray);
+}
+
+.map-picker-map {
+  height: 400px;
+  width: 100%;
+  background: #eee;
+}
+
+.map-picker-map--error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  color: var(--color-accent-gray);
+}
+
+.map-picker-footer {
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+.map-picker-address {
+  margin: 0 0 15px;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.map-picker-address span {
+  font-weight: 400;
+}
+
+.map-picker-address span.is-empty {
+  color: #999;
+}
+
+.map-picker-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.map-picker-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.map-picker-btn--cancel {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: var(--color-secondary);
+}
+
+.map-picker-btn--confirm {
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.map-picker-btn--confirm:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .map-picker-overlay {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .map-picker-modal {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .map-picker-map {
+    flex: 1;
+    min-height: 280px;
+    height: auto;
+  }
+}

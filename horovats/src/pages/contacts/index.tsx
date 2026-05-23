@@ -56,25 +56,6 @@ const ContactsPage: FC = () => {
         </div>
       </section>
 
-      <section className="contacts-eda">
-        <h2 className="contacts-eda__title">Заказ в Яндекс Еде</h2>
-        <p className="contacts-eda__subtitle">Выберите ресторан и закажите напрямую в приложении:</p>
-        <ul className="contacts-eda__list">
-          {YANDEX_EDA_RESTAURANTS.map((restaurant) => (
-            <li key={restaurant.name}>
-              <a
-                href={restaurant.url}
-                className="contacts-eda__link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {restaurant.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <div className="contacts-grid">
         <div className="contact-card">
           <h3 className="contact-card-title">Заказы по телефону</h3>
@@ -91,6 +72,25 @@ const ContactsPage: FC = () => {
           <div className="contact-card-value">
             ул. Сергия Радонежского, 29-31с4
           </div>
+        </div>
+
+        <div className="contact-card contact-card--eda">
+          <h3 className="contact-card-title">Заказ в Яндекс Еде</h3>
+          <p className="contact-card-note">Каждый ресторан — отдельно в приложении</p>
+          <ul className="contact-eda-links">
+            {YANDEX_EDA_RESTAURANTS.map((restaurant) => (
+              <li key={restaurant.name}>
+                <a
+                  href={restaurant.url}
+                  className="contact-eda-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {restaurant.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 

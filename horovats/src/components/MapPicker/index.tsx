@@ -1,21 +1,10 @@
-import { type FC, useState, useEffect } from 'react';
+import { type FC, useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import { loadYandexMaps, reverseGeocode } from '../../utils/loadYandexMaps';
+import './MapPicker.css';
 
-// Fix for default marker icon in Leaflet with Webpack/Vite
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
-const DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41]
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
+/** Район ресторана — ул. Сергия Радонежского */
+const DEFAULT_CENTER: [number, number] = [55.748, 37.6745];
 
 interface MapPickerProps {
   onAddressSelect: (address: string) => void;
@@ -23,44 +12,71 @@ interface MapPickerProps {
   onClose: () => void;
 }
 
-const MapFix = () => {
-  const map = useMap();
-  useEffect(() => {
-    // Invalidate size after a short delay to ensure the container is fully rendered and styled
-    const timer = setTimeout(() => {
-      map.invalidateSize();
-    }, 200);
-    return () => clearTimeout(timer);
-  }, [map]);
-  return null;
-};
-
-const LocationMarker: FC<{ setAddress: (address: string) => void, setPosition: (pos: L.LatLng) => void, position: L.LatLng | null }> = ({ setAddress, setPosition, position }) => {
-  const map = useMapEvents({
-    click(e) {
-      setPosition(e.latlng);
-      map.flyTo(e.latlng, map.getZoom());
-      
-      // Reverse geocoding using OpenStreetMap Nominatim
-      fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.display_name) {
-            setAddress(data.display_name);
-          }
-        })
-        .catch(err => console.error('Error fetching address:', err));
-    },
-  });
-
-  return position === null ? null : (
-    <Marker position={position}></Marker>
-  );
-};
-
 const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
-  const [position, setPosition] = useState<L.LatLng | null>(null);
-  const [address, setAddress] = useState<string>('');
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<ymaps.IMap | null>(null);
+  const placemarkRef = useRef<ymaps.IGeoObject | null>(null);
+
+  const [address, setAddress] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const setPlacemark = (ymapsApi: typeof ymaps, coords: number[]) => {
+      const map = mapRef.current;
+      if (!map) return;
+
+      if (placemarkRef.current) {
+        map.geoObjects.remove(placemarkRef.current);
+      }
+
+      const placemark = ymapsApi.Placemark(coords, {}, { preset: 'islands#redDotIcon' });
+      map.geoObjects.add(placemark);
+      placemarkRef.current = placemark;
+    };
+
+    loadYandexMaps()
+      .then((ymapsApi) => {
+        if (cancelled || !mapContainerRef.current) return;
+
+        const map = ymapsApi.Map(
+          mapContainerRef.current,
+          {
+            center: DEFAULT_CENTER,
+            zoom: 15,
+            controls: ['zoomControl', 'geolocationControl'],
+          },
+          { suppressMapOpenBlock: true },
+        );
+
+        mapRef.current = map;
+
+        map.events.add('click', (event) => {
+          const coords = event.get('coords') as number[];
+          setPlacemark(ymapsApi, coords);
+          void reverseGeocode(coords)
+            .then((line) => setAddress(line))
+            .catch(() => setAddress(''));
+        });
+
+        setLoading(false);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setError('Не удалось загрузить Яндекс.Карты. Проверьте ключ API (VITE_YANDEX_MAPS_API_KEY).');
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      placemarkRef.current = null;
+      mapRef.current?.destroy();
+      mapRef.current = null;
+    };
+  }, []);
 
   const handleConfirm = () => {
     if (address) {
@@ -70,39 +86,38 @@ const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
   };
 
   const mapContent = (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-      backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 10000,
-      display: 'flex', alignItems: 'center', justifyContent: 'center'
-    }}>
-      <div style={{
-        backgroundColor: '#fff', borderRadius: '16px', overflow: 'hidden',
-        width: '90%', maxWidth: '800px', display: 'flex', flexDirection: 'column',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
-      }}>
-        <div style={{ padding: '15px 20px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h3 style={{ margin: 0 }}>Выберите адрес на карте</h3>
-          <button onClick={onClose} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}>&times;</button>
-        </div>
-        
-        <div style={{ height: '400px', width: '100%', position: 'relative' }}>
-          <MapContainer center={[55.7558, 37.6173]} zoom={13} style={{ height: '100%', width: '100%', zIndex: 0 }}>
-            <MapFix />
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <LocationMarker setAddress={setAddress} setPosition={setPosition} position={position} />
-          </MapContainer>
+    <div className="map-picker-overlay" onClick={onClose}>
+      <div className="map-picker-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="map-picker-header">
+          <h3>Выберите адрес на карте</h3>
+          <button type="button" className="map-picker-close" onClick={onClose} aria-label="Закрыть">
+            &times;
+          </button>
         </div>
 
-        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', zIndex: 1 }}>
-          <p style={{ margin: '0 0 15px 0', fontWeight: 'bold' }}>
-            Выбранный адрес: <span style={{ fontWeight: 'normal', color: address ? '#333' : '#999' }}>{address || 'Кликните на карту'}</span>
+        {error ? (
+          <div className="map-picker-map map-picker-map--error">{error}</div>
+        ) : (
+          <div ref={mapContainerRef} className="map-picker-map" aria-busy={loading} />
+        )}
+
+        <div className="map-picker-footer">
+          <p className="map-picker-address">
+            Выбранный адрес:{' '}
+            <span className={address ? '' : 'is-empty'}>{address || 'Нажмите на карту'}</span>
           </p>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-            <button onClick={onClose} style={{ padding: '8px 16px', borderRadius: '8px', border: '1px solid #ccc', background: '#fff', cursor: 'pointer' }}>Отмена</button>
-            <button onClick={handleConfirm} disabled={!address} style={{ padding: '8px 16px', borderRadius: '8px', border: 'none', background: address ? 'var(--color-primary)' : '#ccc', color: '#fff', cursor: address ? 'pointer' : 'not-allowed' }}>Подтвердить</button>
+          <div className="map-picker-actions">
+            <button type="button" className="map-picker-btn map-picker-btn--cancel" onClick={onClose}>
+              Отмена
+            </button>
+            <button
+              type="button"
+              className="map-picker-btn map-picker-btn--confirm"
+              onClick={handleConfirm}
+              disabled={!address}
+            >
+              Подтвердить
+            </button>
           </div>
         </div>
       </div>

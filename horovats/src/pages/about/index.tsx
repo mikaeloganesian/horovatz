@@ -1,15 +1,11 @@
 import { type FC } from 'react';
 import './About.css';
 import heroImg from '../../assets/hero-img.jpg';
-import logo from '../../assets/logo.png';
 
 const AboutPage: FC = () => {
   return (
     <div className="about-page">
       <header className="about-header">
-        <div className="about-logo-container">
-          <img src={logo} alt="ХОРОВАЦ Логотип" className="about-logo" />
-        </div>
         <h1 style={{ color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>О нас</h1>
         <p>Четыре концепции вкуса в одной доставке</p>
       </header>
