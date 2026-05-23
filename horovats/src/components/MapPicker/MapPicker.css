@@ -57,6 +57,22 @@
   color: var(--color-accent-gray);
 }
 
+.map-picker-map--leaflet {
+  position: relative;
+}
+
+.map-picker-leaflet {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+/* На некоторых tile-серверах в атрибуции бывает флаг — скрываем изображения */
+.map-picker-leaflet .leaflet-control-attribution img,
+.map-picker-leaflet .leaflet-control-attribution svg {
+  display: none !important;
+}
+
 .map-picker-footer {
   padding: 20px;
   background: #f9f9f9;

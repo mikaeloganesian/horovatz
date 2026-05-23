@@ -1,10 +1,30 @@
-import { type FC, useState, useEffect, useRef } from 'react';
+import { type FC, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { loadYandexMaps, reverseGeocode } from '../../utils/loadYandexMaps';
+import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import './MapPicker.css';
+
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  iconRetinaUrl: iconRetina,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 /** Район ресторана — ул. Сергия Радонежского */
 const DEFAULT_CENTER: [number, number] = [55.748, 37.6745];
+
+/** Carto tiles — без политической символики в атрибуции OSM tile-серверов */
+const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+const TILE_ATTRIBUTION =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
 interface MapPickerProps {
   onAddressSelect: (address: string) => void;
@@ -12,71 +32,46 @@ interface MapPickerProps {
   onClose: () => void;
 }
 
-const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
-  const mapContainerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<ymaps.IMap | null>(null);
-  const placemarkRef = useRef<ymaps.IGeoObject | null>(null);
-
-  const [address, setAddress] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
+const MapFix: FC = () => {
+  const map = useMap();
   useEffect(() => {
-    let cancelled = false;
+    const timer = setTimeout(() => map.invalidateSize(), 200);
+    return () => clearTimeout(timer);
+  }, [map]);
+  return null;
+};
 
-    const setPlacemark = (ymapsApi: typeof ymaps, coords: number[]) => {
-      const map = mapRef.current;
-      if (!map) return;
+const LocationMarker: FC<{
+  position: L.LatLng | null;
+  onPick: (latlng: L.LatLng, address: string) => void;
+}> = ({ position, onPick }) => {
+  const map = useMapEvents({
+    click(e) {
+      map.flyTo(e.latlng, map.getZoom());
+      fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${e.latlng.lat}&lon=${e.latlng.lng}&accept-language=ru`,
+        { headers: { 'Accept-Language': 'ru' } },
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const line = data?.display_name ?? '';
+          onPick(e.latlng, line);
+        })
+        .catch(() => onPick(e.latlng, ''));
+    },
+  });
 
-      if (placemarkRef.current) {
-        map.geoObjects.remove(placemarkRef.current);
-      }
+  return position === null ? null : <Marker position={position} />;
+};
 
-      const placemark = ymapsApi.Placemark(coords, {}, { preset: 'islands#redDotIcon' });
-      map.geoObjects.add(placemark);
-      placemarkRef.current = placemark;
-    };
+const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
+  const [position, setPosition] = useState<L.LatLng | null>(null);
+  const [address, setAddress] = useState('');
 
-    loadYandexMaps()
-      .then((ymapsApi) => {
-        if (cancelled || !mapContainerRef.current) return;
-
-        const map = ymapsApi.Map(
-          mapContainerRef.current,
-          {
-            center: DEFAULT_CENTER,
-            zoom: 15,
-            controls: ['zoomControl', 'geolocationControl'],
-          },
-          { suppressMapOpenBlock: true },
-        );
-
-        mapRef.current = map;
-
-        map.events.add('click', (event) => {
-          const coords = event.get('coords') as number[];
-          setPlacemark(ymapsApi, coords);
-          void reverseGeocode(coords)
-            .then((line) => setAddress(line))
-            .catch(() => setAddress(''));
-        });
-
-        setLoading(false);
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setError('Не удалось загрузить Яндекс.Карты. Проверьте ключ API (VITE_YANDEX_MAPS_API_KEY).');
-          setLoading(false);
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      placemarkRef.current = null;
-      mapRef.current?.destroy();
-      mapRef.current = null;
-    };
-  }, []);
+  const handlePick = (latlng: L.LatLng, line: string) => {
+    setPosition(latlng);
+    setAddress(line);
+  };
 
   const handleConfirm = () => {
     if (address) {
@@ -85,7 +80,7 @@ const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
     }
   };
 
-  const mapContent = (
+  return createPortal(
     <div className="map-picker-overlay" onClick={onClose}>
       <div className="map-picker-modal" onClick={(e) => e.stopPropagation()}>
         <div className="map-picker-header">
@@ -95,11 +90,13 @@ const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
           </button>
         </div>
 
-        {error ? (
-          <div className="map-picker-map map-picker-map--error">{error}</div>
-        ) : (
-          <div ref={mapContainerRef} className="map-picker-map" aria-busy={loading} />
-        )}
+        <div className="map-picker-map map-picker-map--leaflet">
+          <MapContainer center={DEFAULT_CENTER} zoom={15} className="map-picker-leaflet">
+            <MapFix />
+            <TileLayer attribution={TILE_ATTRIBUTION} url={TILE_URL} subdomains="abcd" maxZoom={20} />
+            <LocationMarker position={position} onPick={handlePick} />
+          </MapContainer>
+        </div>
 
         <div className="map-picker-footer">
           <p className="map-picker-address">
@@ -121,10 +118,9 @@ const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
-
-  return createPortal(mapContent, document.body);
 };
 
 export default MapPicker;
