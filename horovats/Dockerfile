@@ -1,12 +1,15 @@
 # syntax=docker/dockerfile:1
 # Кэш npm ускоряет повторные сборки (нужен BuildKit: DOCKER_BUILDKIT=1 или docker compose build)
-FROM node:22-alpine AS build
+FROM node:22-bookworm-slim AS build
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci
+    npm ci --no-audit --no-fund
 
 COPY . .
 
