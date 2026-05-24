@@ -140,6 +140,17 @@ a.contact-card-value:hover {
   text-decoration: underline;
 }
 
+.contacts-legal-links {
+  text-align: center;
+  margin: 24px 0 0;
+  font-size: 0.9rem;
+}
+
+.contacts-legal-links a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 .map-container {
   width: 100%;
   height: 500px;

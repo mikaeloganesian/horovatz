@@ -2,6 +2,7 @@ import { type FC, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/StoreContext';
+import { LEGAL } from '../../constants/legal';
 import './Header.css';
 import logo from '../../assets/logo-small.png';
 
@@ -59,8 +60,8 @@ const Header: FC = observer(() => {
         </nav>
 
         <div className="header-actions">
-          <a href="tel:+79153380040" className="phone-number">
-            +7-(915)-338-00-40
+          <a href={`tel:${LEGAL.orderPhoneHref}`} className="phone-number">
+            {LEGAL.orderPhone}
           </a>
           <button type="button" className="cart-icon-btn" onClick={() => cartStore.setIsCartOpen(true)} aria-label="Корзина">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -137,8 +138,8 @@ const Header: FC = observer(() => {
             </ul>
           </nav>
           <div className="mobile-nav__footer">
-            <a href="tel:+79153380040" className="mobile-nav__phone">
-              +7 (915) 338-00-40
+            <a href={`tel:${LEGAL.orderPhoneHref}`} className="mobile-nav__phone">
+              {LEGAL.orderPhone}
             </a>
           </div>
         </div>

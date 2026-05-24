@@ -1,4 +1,6 @@
 import { type FC } from 'react';
+import { Link } from 'react-router-dom';
+import { LEGAL } from '../../constants/legal';
 import './Loyalty.css';
 
 const LoyaltyPage: FC = () => {
@@ -18,6 +20,11 @@ const LoyaltyPage: FC = () => {
           <div className="loyalty-notice">
             <p>Сразу после оформления заказа на сайте с вами свяжется наш оператор для подтверждения точного адреса и времени доставки.</p>
           </div>
+          <p>
+            Стоимость доставки — <b>{LEGAL.deliveryFeeRub} ₽</b> (бесплатно при заказе от 10 000 ₽).
+            Оплата на сайте — банковской картой через сервис <b>ЮKassa</b>. Подробнее — в{' '}
+            <Link to="/oferta">публичной оферте</Link>.
+          </p>
         </div>
 
         <div className="loyalty-text">

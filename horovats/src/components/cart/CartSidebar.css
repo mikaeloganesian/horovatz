@@ -269,6 +269,7 @@
 
 .checkout-btn {
   width: 100%;
+  margin-top: 12px;
   padding: 18px;
   background-color: var(--color-primary);
   color: white;
@@ -378,6 +379,7 @@
 }
 
 .guest-checkout-actions {
+  margin-top: 16px;
   display: flex;
   gap: 12px;
   justify-content: flex-end;

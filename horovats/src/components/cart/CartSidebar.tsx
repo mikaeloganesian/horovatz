@@ -8,6 +8,7 @@ import dishImagePlaceholder from '../../assets/hero-img.jpg';
 import { getImageUrl } from '../../utils/image';
 import { finalizeOrderTotal } from '../../utils/orderPricing';
 import MapPicker from '../MapPicker';
+import LegalConsent from '../legal/LegalConsent';
 
 const CartSidebar: FC = observer(() => {
   const { cartStore, authStore, orderStore, uiStore, menuStore } = useStore();
@@ -19,6 +20,8 @@ const CartSidebar: FC = observer(() => {
   const [guestName, setGuestName] = useState('');
   const [guestPhone, setGuestPhone] = useState('');
   const [guestEmail, setGuestEmail] = useState('');
+  const [legalAccepted, setLegalAccepted] = useState(false);
+  const [guestLegalAccepted, setGuestLegalAccepted] = useState(false);
 
   useEffect(() => {
     if (authStore.user?.address) {
@@ -50,6 +53,13 @@ const CartSidebar: FC = observer(() => {
     }));
 
   const handleCheckoutAuth = async () => {
+    if (!legalAccepted) {
+      await uiStore.alert('Примите условия оферты и политику конфиденциальности для оформления заказа.', {
+        title: 'Согласие',
+        variant: 'error',
+      });
+      return;
+    }
     if (!address.trim()) {
       await uiStore.alert('Пожалуйста, укажите адрес доставки перед оформлением заказа.', {
         title: 'Адрес доставки',
@@ -68,6 +78,13 @@ const CartSidebar: FC = observer(() => {
 
   const handleCheckoutClick = async () => {
     orderStore.clearError();
+    if (!legalAccepted) {
+      await uiStore.alert('Примите условия оферты и политику конфиденциальности для оформления заказа.', {
+        title: 'Согласие',
+        variant: 'error',
+      });
+      return;
+    }
     if (!address.trim()) {
       await uiStore.alert('Пожалуйста, укажите адрес доставки перед оформлением заказа.', {
         title: 'Адрес доставки',
@@ -98,6 +115,13 @@ const CartSidebar: FC = observer(() => {
       });
       return;
     }
+    if (!guestLegalAccepted) {
+      await uiStore.alert('Примите условия оферты и политику конфиденциальности.', {
+        title: 'Согласие',
+        variant: 'error',
+      });
+      return;
+    }
 
     const success = await orderStore.createOrder(buildOrderItems(), address.trim(), {
       name: guestName.trim(),
@@ -112,6 +136,7 @@ const CartSidebar: FC = observer(() => {
       setGuestName('');
       setGuestPhone('');
       setGuestEmail('');
+      setGuestLegalAccepted(false);
       await uiStore.alert('Спасибо! Заказ принят. Мы свяжемся с вами для подтверждения.', {
         title: 'Заказ оформлен',
         variant: 'success',
@@ -175,6 +200,11 @@ const CartSidebar: FC = observer(() => {
               <p className="guest-checkout-mini">
                 Адрес доставки: <strong>{address || 'не указан'}</strong>
               </p>
+              <LegalConsent
+                id="guest-legal-consent"
+                checked={guestLegalAccepted}
+                onChange={setGuestLegalAccepted}
+              />
               <div className="guest-checkout-actions">
                 <button type="button" className="guest-checkout-btn ghost" onClick={() => setShowGuestCheckout(false)}>
                   Отмена
@@ -324,6 +354,8 @@ const CartSidebar: FC = observer(() => {
             {orderStore.error && !showGuestCheckout && (
               <div style={{ color: 'red', fontSize: '0.8rem', marginTop: '10px', textAlign: 'center' }}>{orderStore.error}</div>
             )}
+
+            <LegalConsent checked={legalAccepted} onChange={setLegalAccepted} />
 
             <button type="button" className="checkout-btn" onClick={handleCheckoutClick} disabled={orderStore.isLoading}>
               {orderStore.isLoading ? 'Оформление...' : 'Оформить заказ'}

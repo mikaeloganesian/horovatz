@@ -1,4 +1,6 @@
 import { type FC } from 'react';
+import { Link } from 'react-router-dom';
+import { LEGAL } from '../../constants/legal';
 import './Contacts.css';
 
 const YANDEX_EDA_RESTAURANTS = [
@@ -58,8 +60,18 @@ const ContactsPage: FC = () => {
 
       <div className="contacts-grid">
         <div className="contact-card">
+          <h3 className="contact-card-title">Продавец</h3>
+          <div className="contact-card-value">{LEGAL.sellerLabel}</div>
+        </div>
+
+        <div className="contact-card">
           <h3 className="contact-card-title">Заказы по телефону</h3>
-          <a href="tel:+79153380040" className="contact-card-value">+7 (915) 338-00-40</a>
+          <a href={`tel:${LEGAL.orderPhoneHref}`} className="contact-card-value">{LEGAL.orderPhone}</a>
+        </div>
+
+        <div className="contact-card">
+          <h3 className="contact-card-title">Email</h3>
+          <a href={`mailto:${LEGAL.email}`} className="contact-card-value">{LEGAL.email}</a>
         </div>
 
         <div className="contact-card">
@@ -68,20 +80,23 @@ const ContactsPage: FC = () => {
         </div>
 
         <div className="contact-card">
+          <h3 className="contact-card-title">Юридический адрес</h3>
+          <div className="contact-card-value">{LEGAL.address}</div>
+        </div>
+
+        <div className="contact-card">
           <h3 className="contact-card-title">Адрес ресторана</h3>
-          <div className="contact-card-value">
-            ул. Сергия Радонежского, 29-31с4
-          </div>
+          <div className="contact-card-value">{LEGAL.pickupAddress}</div>
         </div>
 
         <div className="contact-card">
           <h3 className="contact-card-title">ИНН</h3>
-          <div className="contact-card-value">772965044983</div>
+          <div className="contact-card-value">{LEGAL.inn}</div>
         </div>
 
         <div className="contact-card">
           <h3 className="contact-card-title">ОГРНИП</h3>
-          <div className="contact-card-value">324774600771693</div>
+          <div className="contact-card-value">{LEGAL.ogrnip}</div>
         </div>
 
         <div className="contact-card contact-card--eda">
@@ -103,6 +118,12 @@ const ContactsPage: FC = () => {
           </ul>
         </div>
       </div>
+
+      <p className="contacts-legal-links">
+        <Link to="/oferta">Публичная оферта</Link>
+        {' · '}
+        <Link to="/privacy">Политика конфиденциальности</Link>
+      </p>
 
       <div className="map-container">
         <iframe

@@ -1,0 +1,21 @@
+.legal-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--color-accent-gray);
+  cursor: pointer;
+  text-align: left;
+}
+
+.legal-consent input {
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+}
+
+.legal-consent a {
+  color: var(--color-primary);
+  font-weight: 600;
+}

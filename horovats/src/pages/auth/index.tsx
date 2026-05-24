@@ -2,6 +2,7 @@ import { type FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/StoreContext';
+import LegalConsent from '../../components/legal/LegalConsent';
 import './Auth.css';
 import heroImg from '../../assets/hero-img.jpg';
 
@@ -11,6 +12,7 @@ const AuthPage: FC = observer(() => {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
+  const [legalAccepted, setLegalAccepted] = useState(false);
   
   const { authStore } = useStore();
   const navigate = useNavigate();
@@ -21,6 +23,9 @@ const AuthPage: FC = observer(() => {
       const success = await authStore.login(email, password);
       if (success) navigate('/profile');
     } else {
+      if (!legalAccepted) {
+        return;
+      }
       const success = await authStore.register(email, phone, name, password);
       if (success) {
         setIsLogin(true); // switch to login after registration
@@ -114,7 +119,10 @@ const AuthPage: FC = observer(() => {
                   required 
                 />
               </div>
-              <button type="submit" className="auth-submit-btn" disabled={authStore.isLoading}>
+              {!isLogin && (
+                <LegalConsent id="auth-legal-consent" checked={legalAccepted} onChange={setLegalAccepted} />
+              )}
+              <button type="submit" className="auth-submit-btn" disabled={authStore.isLoading || (!isLogin && !legalAccepted)}>
                 {authStore.isLoading ? 'Загрузка...' : (isLogin ? 'Войти' : 'Зарегистрироваться')}
               </button>
             </form>

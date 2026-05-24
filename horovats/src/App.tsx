@@ -18,6 +18,9 @@ import AuthPage from './pages/auth';
 import ProfilePage from './pages/profile';
 import AdminPanel from './pages/admin';
 import AdminNewOrderAlert from './components/admin/AdminNewOrderAlert';
+import SiteFooter from './components/footer/SiteFooter';
+import OfertaPage from './pages/legal/oferta';
+import PrivacyPage from './pages/legal/privacy';
 
 const AnimatedRoutes: FC = () => {
   const location = useLocation();
@@ -46,6 +49,8 @@ const AnimatedRoutes: FC = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/loyalty" element={<LoyaltyPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/oferta" element={<OfertaPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPanel />} />
@@ -96,9 +101,7 @@ const App: FC = observer(() => {
             <AnimatedRoutes />
           </main>
 
-          <footer className="footer-text">
-            © 2026 ХОРОВАЦ. Premium доставка.
-          </footer>
+          <SiteFooter />
 
           <ModalRoot />
           <CartSidebar />
