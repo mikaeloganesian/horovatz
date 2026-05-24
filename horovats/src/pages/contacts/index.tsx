@@ -74,6 +74,16 @@ const ContactsPage: FC = () => {
           </div>
         </div>
 
+        <div className="contact-card">
+          <h3 className="contact-card-title">ИНН</h3>
+          <div className="contact-card-value">772965044983</div>
+        </div>
+
+        <div className="contact-card">
+          <h3 className="contact-card-title">ОГРНИП</h3>
+          <div className="contact-card-value">324774600771693</div>
+        </div>
+
         <div className="contact-card contact-card--eda">
           <h3 className="contact-card-title">Заказ в Яндекс Еде</h3>
           <p className="contact-card-note">Каждый ресторан — отдельно в приложении</p>
