@@ -38,6 +38,18 @@ func createYookassaPayment(order *models.Order, token string, idempotenceKey str
 	if idempotenceKey == "" {
 		idempotenceKey = fmt.Sprintf("order-%d", order.ID)
 	}
+
+	if len(order.Items) == 0 {
+		if err := database.DB.Preload("Items").First(order, order.ID).Error; err != nil {
+			return "", err
+		}
+	}
+
+	receipt, err := buildOrderReceipt(order)
+	if err != nil {
+		return "", err
+	}
+
 	req := yookassa.CreatePaymentRequest{
 		Amount: yookassa.Amount{
 			Value:    yookassa.FormatAmount(order.TotalPrice),
@@ -52,6 +64,7 @@ func createYookassaPayment(order *models.Order, token string, idempotenceKey str
 		Metadata: map[string]string{
 			"order_id": strconv.FormatUint(uint64(order.ID), 10),
 		},
+		Receipt: receipt,
 	}
 
 	payment, err := ykClient.CreatePayment(idempotenceKey, req)
@@ -135,7 +148,7 @@ func RetryOrderPayment(c *gin.Context) {
 	}
 
 	var order models.Order
-	if err := database.DB.First(&order, orderID).Error; err != nil {
+	if err := database.DB.Preload("Items").First(&order, orderID).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Заказ не найден"})
 		return
 	}

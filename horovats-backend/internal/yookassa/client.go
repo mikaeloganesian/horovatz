@@ -27,12 +27,33 @@ type Confirmation struct {
 	ReturnURL string `json:"return_url"`
 }
 
+type ReceiptCustomer struct {
+	Email string `json:"email,omitempty"`
+	Phone string `json:"phone,omitempty"`
+}
+
+type ReceiptItem struct {
+	Description    string `json:"description"`
+	Quantity       string `json:"quantity"`
+	Amount         Amount `json:"amount"`
+	VatCode        int    `json:"vat_code"`
+	PaymentMode    string `json:"payment_mode"`
+	PaymentSubject string `json:"payment_subject"`
+}
+
+type Receipt struct {
+	Customer      ReceiptCustomer `json:"customer"`
+	Items         []ReceiptItem   `json:"items"`
+	TaxSystemCode int             `json:"tax_system_code"`
+}
+
 type CreatePaymentRequest struct {
 	Amount       Amount            `json:"amount"`
 	Confirmation Confirmation      `json:"confirmation"`
 	Capture      bool              `json:"capture"`
 	Description  string            `json:"description"`
 	Metadata     map[string]string `json:"metadata,omitempty"`
+	Receipt      *Receipt          `json:"receipt,omitempty"`
 }
 
 type Payment struct {
