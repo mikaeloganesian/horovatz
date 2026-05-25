@@ -89,7 +89,7 @@ func ReturnURLBase() string {
 	if v := os.Getenv("YOOKASSA_RETURN_URL"); v != "" {
 		return v
 	}
-	return "https://horovats.ru/payment/return"
+	return "https://horovatz.ru/payment/return"
 }
 
 func FormatAmount(amount float64) string {

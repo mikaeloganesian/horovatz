@@ -1,7 +1,7 @@
 /** Реквизиты продавца — единый источник для оферты, контактов и футера. */
 export const LEGAL = {
   brand: 'ХОРОВАЦ',
-  siteUrl: 'https://horovats.ru',
+  siteUrl: 'https://horovatz.ru',
   sellerLabel: 'Индивидуальный предприниматель Стриже Ася Робертовна',
   inn: '772965044983',
   ogrnip: '324774600771693',
