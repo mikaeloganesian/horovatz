@@ -30,6 +30,9 @@ const DishModal: FC<DishModalProps> = observer(({ dish, isOpen, onClose, onSelec
 
   if (!isOpen || !dish) return null;
 
+  const ingredients = dish.ingredients?.trim();
+  const hasIngredients = Boolean(ingredients);
+
   const handleAddToCart = () => {
     cartStore.addToCart(dish);
     onClose();
@@ -62,12 +65,17 @@ const DishModal: FC<DishModalProps> = observer(({ dish, isOpen, onClose, onSelec
             
             <p className="modal-description">{dish.description}</p>
             
+            {(hasIngredients || recommendedDish) && (
             <div className="modal-additional-info">
-              <h3>Состав:</h3>
-              <p>{dish.ingredients || 'Мясо, специи, лук репчатый, соус фирменный, лаваш.'}</p>
+              {hasIngredients && (
+                <>
+                  <h3>Состав:</h3>
+                  <p>{ingredients}</p>
+                </>
+              )}
               
               {recommendedDish && (
-                <div className="modal-recommendation" style={{ marginTop: '25px' }}>
+                <div className="modal-recommendation" style={{ marginTop: hasIngredients ? '25px' : undefined }}>
                   <h3 style={{ marginBottom: '12px' }}>Рекомендуем добавить:</h3>
                   <div 
                     className="mini-dish-card" 
@@ -113,6 +121,7 @@ const DishModal: FC<DishModalProps> = observer(({ dish, isOpen, onClose, onSelec
                 </div>
               )}
             </div>
+            )}
             
             <div className="modal-footer">
               <div className="modal-price-container">

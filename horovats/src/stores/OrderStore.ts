@@ -19,8 +19,24 @@ export interface Order {
     status: string;
     totalPrice: number;
     deliveryAddress: string;
+    paymentStatus?: string;
+    yookassaPaymentId?: string;
     created_at: string;
     items: OrderItem[];
+}
+
+export interface CreateOrderResult {
+    order: Order;
+    confirmationUrl?: string;
+    paymentToken?: string;
+    paymentRequired: boolean;
+}
+
+export interface PaymentStatusResult {
+    orderId: number;
+    status: string;
+    paymentStatus: string;
+    totalPrice: number;
 }
 
 export default class OrderStore {
@@ -56,7 +72,7 @@ export default class OrderStore {
         items: { dishId: string; dishTitle: string; quantity: number; price: number; imageUrl: string }[],
         deliveryAddress: string,
         guest?: { name: string; phone: string; email?: string }
-    ) {
+    ): Promise<CreateOrderResult | null> {
         try {
             this.isLoading = true;
             this.error = null;
@@ -66,17 +82,42 @@ export default class OrderStore {
                 payload.guestPhone = guest.phone;
                 payload.guestEmail = guest.email ?? '';
             }
-            await $api.post('/orders', payload);
+            const response = await $api.post<CreateOrderResult>('/orders', payload);
             runInAction(() => {
                 this.isLoading = false;
             });
-            return true;
+            return response.data;
         } catch (e: any) {
             runInAction(() => {
                 this.error = e.response?.data?.error || "Не удалось оформить заказ";
                 this.isLoading = false;
             });
-            return false;
+            return null;
+        }
+    }
+
+    async fetchPaymentStatus(orderId: number, token: string): Promise<PaymentStatusResult | null> {
+        try {
+            const response = await $api.get<PaymentStatusResult>(`/orders/${orderId}/payment-status`, {
+                params: { token },
+            });
+            return response.data;
+        } catch {
+            return null;
+        }
+    }
+
+    async retryPayment(orderId: number, token: string): Promise<string | null> {
+        try {
+            const response = await $api.post<{ confirmationUrl: string }>(`/orders/${orderId}/pay`, null, {
+                params: { token },
+            });
+            return response.data.confirmationUrl || null;
+        } catch (e: any) {
+            runInAction(() => {
+                this.error = e.response?.data?.error || "Не удалось повторить оплату";
+            });
+            return null;
         }
     }
 }

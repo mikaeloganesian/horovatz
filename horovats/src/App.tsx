@@ -21,6 +21,7 @@ import AdminNewOrderAlert from './components/admin/AdminNewOrderAlert';
 import SiteFooter from './components/footer/SiteFooter';
 import OfertaPage from './pages/legal/oferta';
 import PrivacyPage from './pages/legal/privacy';
+import PaymentReturnPage from './pages/payment-return';
 
 const AnimatedRoutes: FC = () => {
   const location = useLocation();
@@ -52,6 +53,7 @@ const AnimatedRoutes: FC = () => {
         <Route path="/oferta" element={<OfertaPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/payment/return" element={<PaymentReturnPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPanel />} />
         {/* 404 заглушка */}

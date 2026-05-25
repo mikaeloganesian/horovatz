@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -41,6 +42,13 @@ func finalizeOrderTotal(subtotal float64) (final float64, deliveryCost float64) 
 	}
 	final += deliveryCost
 	return final, deliveryCost
+}
+
+type CreateOrderResponse struct {
+	Order           models.Order `json:"order"`
+	ConfirmationURL string       `json:"confirmationUrl,omitempty"`
+	PaymentToken    string       `json:"paymentToken,omitempty"`
+	PaymentRequired bool         `json:"paymentRequired"`
 }
 
 // CreateOrder доступен без авторизации (гость). Если передан валидный JWT — заказ привязывается к пользователю.
@@ -120,17 +128,31 @@ func CreateOrder(c *gin.Context) {
 
 	finalPrice, _ := finalizeOrderTotal(totalPrice)
 
+	paymentToken, err := generatePaymentToken()
+	if err != nil {
+		log.Printf("generate payment token: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create order"})
+		return
+	}
+
+	initialStatus := "new"
+	if ykClient.Enabled() {
+		initialStatus = "pending_payment"
+	}
+
 	order := models.Order{
 		UserID:          userPtr,
 		GuestName:       strings.TrimSpace(req.GuestName),
 		GuestPhone:      strings.TrimSpace(req.GuestPhone),
 		GuestEmail:      strings.TrimSpace(req.GuestEmail),
-		Status:          "new",
+		Status:          initialStatus,
 		TotalPrice:      finalPrice,
 		DeliveryAddress: strings.TrimSpace(req.DeliveryAddress),
+		PaymentToken:    paymentToken,
+		PaymentStatus:   "pending",
 	}
 
-	err := database.DB.Transaction(func(tx *gorm.DB) error {
+	err = database.DB.Transaction(func(tx *gorm.DB) error {
 		if err := tx.Omit("Items").Create(&order).Error; err != nil {
 			return err
 		}
@@ -157,7 +179,26 @@ func CreateOrder(c *gin.Context) {
 		resp = order
 	}
 
-	c.JSON(http.StatusOK, resp)
+	out := CreateOrderResponse{
+		Order:        resp,
+		PaymentToken: paymentToken,
+	}
+
+	if ykClient.Enabled() {
+		confirmationURL, payErr := createYookassaPayment(&resp, paymentToken, fmt.Sprintf("order-%d", resp.ID))
+		if payErr != nil {
+			log.Printf("create yookassa payment order %d: %v", resp.ID, payErr)
+			c.JSON(http.StatusBadGateway, gin.H{"error": "Не удалось создать платёж. Попробуйте позже."})
+			return
+		}
+		out.ConfirmationURL = confirmationURL
+		out.PaymentRequired = true
+		if err := database.DB.Preload("Items").First(&resp, order.ID).Error; err == nil {
+			out.Order = resp
+		}
+	}
+
+	c.JSON(http.StatusOK, out)
 }
 
 func GetOrders(c *gin.Context) {

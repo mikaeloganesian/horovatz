@@ -4,6 +4,7 @@ import { useStore } from '../../context/StoreContext';
 import { Navigate } from 'react-router-dom';
 import { getImageUrl } from '../../utils/image';
 import MapPicker from '../../components/MapPicker';
+import { orderStatusLabel } from '../../utils/orderStatus';
 import './Profile.css';
 
 const ProfilePage: FC = observer(() => {
@@ -126,7 +127,7 @@ const ProfilePage: FC = observer(() => {
                   order.status === 'new' ? 'profile-order-status--new' : 'profile-order-status--default'
                 }`}
               >
-                {order.status === 'new' ? 'Новый' : order.status}
+                {orderStatusLabel(order.status)}
               </span>
             </div>
             <div className="profile-order-body">

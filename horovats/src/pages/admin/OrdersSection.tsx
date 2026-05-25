@@ -3,16 +3,13 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/StoreContext';
 import type AdminStore from '../../stores/AdminStore';
 import { getImageUrl } from '../../utils/image';
+import { ORDER_STATUS_LABELS } from '../../utils/orderStatus';
 
 type Props = {
   adminStore: AdminStore;
 };
 
-const statusLabels: Record<string, string> = {
-  new: 'Новый',
-  processing: 'В работе',
-  completed: 'Выполнен',
-};
+const statusLabels = ORDER_STATUS_LABELS;
 
 const OrdersSection: FC<Props> = observer(({ adminStore }) => {
   const { uiStore, toastStore } = useStore();
@@ -90,7 +87,7 @@ const OrdersSection: FC<Props> = observer(({ adminStore }) => {
                 value={drafts[o.id]?.status ?? o.status}
                 onChange={(e) => updateDraft(o.id, { status: e.target.value })}
               >
-                {['new', 'processing', 'completed'].map((s) => (
+                {['pending_payment', 'new', 'processing', 'completed', 'payment_canceled'].map((s) => (
                   <option key={s} value={s}>
                     {statusLabels[s] || s}
                   </option>

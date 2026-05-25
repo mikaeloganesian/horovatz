@@ -9,6 +9,8 @@ import { getImageUrl } from '../../utils/image';
 import { finalizeOrderTotal } from '../../utils/orderPricing';
 import MapPicker from '../MapPicker';
 import LegalConsent from '../legal/LegalConsent';
+import { savePendingPayment } from '../../utils/orderStatus';
+import type { CreateOrderResult } from '../../stores/OrderStore';
 
 const CartSidebar: FC = observer(() => {
   const { cartStore, authStore, orderStore, uiStore, menuStore } = useStore();
@@ -52,6 +54,26 @@ const CartSidebar: FC = observer(() => {
       imageUrl: item.imageUrl || '',
     }));
 
+  const completeCheckout = async (result: CreateOrderResult) => {
+    if (result.paymentRequired && result.confirmationUrl && result.paymentToken) {
+      savePendingPayment({ orderId: result.order.id, token: result.paymentToken });
+      cartStore.setIsCartOpen(false);
+      window.location.href = result.confirmationUrl;
+      return;
+    }
+
+    cartStore.clearCart();
+    cartStore.setIsCartOpen(false);
+    if (authStore.isAuth) {
+      navigate('/profile');
+    } else {
+      await uiStore.alert('Спасибо! Заказ принят. Мы свяжемся с вами для подтверждения.', {
+        title: 'Заказ оформлен',
+        variant: 'success',
+      });
+    }
+  };
+
   const handleCheckoutAuth = async () => {
     if (!legalAccepted) {
       await uiStore.alert('Примите условия оферты и политику конфиденциальности для оформления заказа.', {
@@ -68,11 +90,9 @@ const CartSidebar: FC = observer(() => {
       return;
     }
 
-    const success = await orderStore.createOrder(buildOrderItems(), address.trim());
-    if (success) {
-      cartStore.clearCart();
-      cartStore.setIsCartOpen(false);
-      navigate('/profile');
+    const result = await orderStore.createOrder(buildOrderItems(), address.trim());
+    if (result) {
+      await completeCheckout(result);
     }
   };
 
@@ -123,24 +143,19 @@ const CartSidebar: FC = observer(() => {
       return;
     }
 
-    const success = await orderStore.createOrder(buildOrderItems(), address.trim(), {
+    const result = await orderStore.createOrder(buildOrderItems(), address.trim(), {
       name: guestName.trim(),
       phone: guestPhone.trim(),
       email: guestEmail.trim() || undefined,
     });
 
-    if (success) {
-      cartStore.clearCart();
+    if (result) {
       setShowGuestCheckout(false);
-      cartStore.setIsCartOpen(false);
       setGuestName('');
       setGuestPhone('');
       setGuestEmail('');
       setGuestLegalAccepted(false);
-      await uiStore.alert('Спасибо! Заказ принят. Мы свяжемся с вами для подтверждения.', {
-        title: 'Заказ оформлен',
-        variant: 'success',
-      });
+      await completeCheckout(result);
     }
   };
 
@@ -210,7 +225,7 @@ const CartSidebar: FC = observer(() => {
                   Отмена
                 </button>
                 <button type="submit" className="guest-checkout-btn primary" disabled={orderStore.isLoading}>
-                  {orderStore.isLoading ? 'Отправка…' : 'Подтвердить заказ'}
+                  {orderStore.isLoading ? 'Отправка…' : 'Перейти к оплате'}
                 </button>
               </div>
               {orderStore.error && <div className="guest-checkout-error">{orderStore.error}</div>}
@@ -358,7 +373,7 @@ const CartSidebar: FC = observer(() => {
             <LegalConsent checked={legalAccepted} onChange={setLegalAccepted} />
 
             <button type="button" className="checkout-btn" onClick={handleCheckoutClick} disabled={orderStore.isLoading}>
-              {orderStore.isLoading ? 'Оформление...' : 'Оформить заказ'}
+              {orderStore.isLoading ? 'Оформление...' : 'Оплатить картой'}
             </button>
             {!authStore.isAuth && (
               <p style={{ fontSize: '0.8rem', color: 'var(--color-accent-gray)', marginTop: '12px', textAlign: 'center', marginBottom: 0 }}>

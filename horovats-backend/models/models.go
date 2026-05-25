@@ -44,16 +44,19 @@ type Dish struct {
 }
 
 type Order struct {
-	ID              uint        `gorm:"primaryKey" json:"id"`
-	UserID          *uint       `gorm:"index" json:"userId"` // nil для гостевого заказа
-	GuestName       string      `json:"guestName,omitempty"`
-	GuestPhone      string      `json:"guestPhone,omitempty"`
-	GuestEmail      string      `json:"guestEmail,omitempty"`
-	Status          string      `gorm:"default:new" json:"status"` // new, processing, completed
-	TotalPrice      float64     `json:"totalPrice"`
-	DeliveryAddress string      `json:"deliveryAddress"`
-	CreatedAt       time.Time   `json:"created_at"`
-	Items           []OrderItem `gorm:"foreignKey:OrderID" json:"items"`
+	ID                uint        `gorm:"primaryKey" json:"id"`
+	UserID            *uint       `gorm:"index" json:"userId"` // nil для гостевого заказа
+	GuestName         string      `json:"guestName,omitempty"`
+	GuestPhone        string      `json:"guestPhone,omitempty"`
+	GuestEmail        string      `json:"guestEmail,omitempty"`
+	Status            string      `gorm:"default:new" json:"status"` // pending_payment, new, processing, completed, payment_canceled
+	TotalPrice        float64     `json:"totalPrice"`
+	DeliveryAddress   string      `json:"deliveryAddress"`
+	YookassaPaymentID string      `gorm:"index" json:"yookassaPaymentId,omitempty"`
+	PaymentStatus     string      `json:"paymentStatus,omitempty"`
+	PaymentToken      string      `gorm:"index" json:"-"`
+	CreatedAt         time.Time   `json:"created_at"`
+	Items             []OrderItem `gorm:"foreignKey:OrderID" json:"items"`
 }
 
 type OrderItem struct {

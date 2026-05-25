@@ -82,6 +82,9 @@ func main() {
 
 		// Заказ без авторизации (гость) или с JWT — см. handlers.CreateOrder
 		api.POST("/orders", handlers.CreateOrder)
+		api.GET("/orders/:id/payment-status", handlers.GetOrderPaymentStatus)
+		api.POST("/orders/:id/pay", handlers.RetryOrderPayment)
+		api.POST("/payments/yookassa/webhook", handlers.YookassaWebhook)
 
 		// Protected User Routes
 		user := api.Group("/users")

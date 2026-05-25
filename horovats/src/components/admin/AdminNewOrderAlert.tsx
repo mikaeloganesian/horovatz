@@ -84,13 +84,14 @@ const AdminNewOrderAlert: FC = observer(() => {
       try {
         const { data } = await $api.get<Order[]>('/admin/orders');
         if (cancelled || !data) return;
-        if (data.length === 0) {
+        const paidOrders = data.filter((o) => o.status !== 'pending_payment' && o.status !== 'payment_canceled');
+        if (paidOrders.length === 0) {
           if (lastMaxOrderIdRef.current === null) {
             lastMaxOrderIdRef.current = 0;
           }
           return;
         }
-        const maxId = Math.max(...data.map((o) => o.id));
+        const maxId = Math.max(...paidOrders.map((o) => o.id));
         const prev = lastMaxOrderIdRef.current;
         if (prev === null) {
           lastMaxOrderIdRef.current = maxId;

@@ -1,0 +1,87 @@
+.payment-return-page {
+  max-width: 520px;
+  margin: 48px auto;
+  padding: 0 20px 48px;
+}
+
+.payment-return-card {
+  background: #fff;
+  border: 1px solid rgba(74, 21, 44, 0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.payment-return-card h1 {
+  color: var(--color-primary);
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.payment-return-order {
+  color: var(--color-accent-gray);
+  margin: 0 0 20px;
+}
+
+.payment-return-message {
+  line-height: 1.6;
+  margin: 0 0 16px;
+  color: var(--color-secondary);
+}
+
+.payment-return-error {
+  color: #c0392b;
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+}
+
+.payment-return-hint {
+  font-size: 0.85rem;
+  color: var(--color-accent-gray);
+  margin: 16px 0 0;
+}
+
+.payment-return-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.payment-return-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.payment-return-btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.payment-return-btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.payment-return-btn--ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid rgba(74, 21, 44, 0.2);
+}
+
+.payment-return-card--success .payment-return-message {
+  color: #1e7e34;
+}
+
+.payment-return-card--failed .payment-return-message {
+  color: #856404;
+}
