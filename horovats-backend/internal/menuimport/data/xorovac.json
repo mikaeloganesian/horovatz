@@ -121,7 +121,7 @@
     {
       "id": "ya-3029980176",
       "title": "Хачапури по-аджарски",
-      "description": "Хачапури по-аджарски – это сытная и ароматная выпечка в виде лодочки из мягкого дрожжевого теста с начинкой из сыра и сливочного масла. В центре – запечённое яйцо. Идеальный выбор для перекуса!",
+      "description": "Лодочка из дрожжевого теста с сыром, сливочным маслом и яйцом в центре.",
       "price": 799.0,
       "promoPrice": 639.2,
       "weight": "400 г",
@@ -130,12 +130,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/b19588fa1cee4b4498f3ff1e84eac84d-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Хачапури по-аджарски – это сытная и ароматная выпечка в виде лодочки из мягкого дрожжевого теста с начинкой из сыра и сливочного масла. В центре – запечённое яйцо. Идеальный выбор для перекуса!"
     },
     {
       "id": "ya-3031156786",
       "title": "Хачапури по-аджарски со шпинатом",
-      "description": "",
+      "description": "Хачапури по-аджарски со шпинатом. Еще один вариант привычной сырной лодочки.",
       "price": 860.0,
       "promoPrice": 688.0,
       "weight": "400 г",
@@ -144,12 +145,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/ad8b16f074b14508b6db1f88d9ae8bd1-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031156790",
       "title": "Хачапури по-аджарски с помидорами",
-      "description": "",
+      "description": "Сырная лодочка по-аджарски с помидорами. Для тех, кто любит добавлять овощи к выпечке.",
       "price": 870.0,
       "promoPrice": 696.0,
       "weight": "400 г",
@@ -158,12 +160,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17635794/69a7ad0fe0824a54be6c426b231a5d64-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3029980192",
       "title": "Хачапури по-мегрельски",
-      "description": "Хачапури по-мегрельски - это больше, чем просто выпечка (30 см)",
+      "description": "Хачапури по-мегрельски диаметром 30 см. Можно взять к столу и разделить на всех.",
       "price": 1090.0,
       "promoPrice": 872.0,
       "weight": "550 г",
@@ -172,12 +175,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/651756eda3004625b4defa40eb1ec7a2-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Хачапури по-мегрельски - это больше, чем просто выпечка (30 см)"
     },
     {
       "id": "ya-3031151714",
       "title": "Кубдари",
-      "description": "",
+      "description": "Кубдари - грузинская выпечка для сытного перекуса. Можно взять отдельно или к общему столу.",
       "price": 1100.0,
       "promoPrice": 880.0,
       "weight": "400 г",
@@ -186,12 +190,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20193126/03046449d5344f14aaa502c29f398e12-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031156802",
       "title": "Хачапури по-аджарски с ветчиной",
-      "description": "",
+      "description": "Хачапури по-аджарски с ветчиной. Сырная лодочка для тех, кто предпочитает выпечку с мясной начинкой.",
       "price": 870.0,
       "promoPrice": 696.0,
       "weight": "400 г",
@@ -200,12 +205,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18012291/a1956b440cb04585925239d2533d62ca-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3029980184",
       "title": "Хачапури по-имеретински",
-      "description": "Блюдо представляет собой круглый закрытый пирог с сыром, приготовленный из дрожжевого теста. Имеет ярко выраженный сырный вкус и аромат (30 см)",
+      "description": "Закрытый пирог из дрожжевого теста с сырной начинкой, диаметром 30 см.",
       "price": 960.0,
       "promoPrice": 768.0,
       "weight": "500 г",
@@ -214,12 +220,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/37bed8854ca54f4ebe9bfe2a46bd4f76-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Блюдо представляет собой круглый закрытый пирог с сыром, приготовленный из дрожжевого теста. Имеет ярко выраженный сырный вкус и аромат (30 см)"
     },
     {
       "id": "ya-3031158712",
       "title": "Сочные Хинкали с говядиной Black Angus",
-      "description": "3 шт",
+      "description": "Хинкали с начинкой из говядины Black Angus. В порции 3 штуки.",
       "price": 750.0,
       "promoPrice": 600.0,
       "weight": "300 г",
@@ -228,12 +235,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20193126/30890f47de3048e6ac88ee881f9ded29-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "3 шт"
     },
     {
       "id": "ya-3029980281",
       "title": "Шесть горячих хинкали с бараниной",
-      "description": "Горячие хинкали с сочной начинкой из баранины. Их подают свежеприготовленными, и они особенно хороши, когда бульон внутри ещё не успел остыть. Тесто тонкое, но плотное, держит форму и не рвётся. Начинка ароматная и сытная (6 шт.)",
+      "description": "Шесть горячих хинкали с бараниной и бульоном внутри. Лучше есть, пока не остыли.",
       "price": 1250.0,
       "promoPrice": 1000.0,
       "weight": "600 г",
@@ -288,12 +296,13 @@
           "minSelected": 0,
           "maxSelected": 4
         }
-      ]
+      ],
+      "sourceDescription": "Горячие хинкали с сочной начинкой из баранины. Их подают свежеприготовленными, и они особенно хороши, когда бульон внутри ещё не успел остыть. Тесто тонкое, но плотное, держит форму и не рвётся. Начинка ароматная и сытная (6 шт.)"
     },
     {
       "id": "ya-3029980250",
       "title": "Хинкали классические",
-      "description": "Нежное тесто и сочная начинка из свинины и говядины - гармоничное сочетание, которое не оставит вас равнодушными (3 шт.)",
+      "description": "Тонкое тесто и сочная начинка из свинины и говядины. В порции 3 хинкали.",
       "price": 1090.0,
       "promoPrice": 872.0,
       "weight": "500 г",
@@ -302,12 +311,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17751752/67073fa30f9e4776bb0f6ecde0f45e15-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Нежное тесто и сочная начинка из свинины и говядины - гармоничное сочетание, которое не оставит вас равнодушными (3 шт.)"
     },
     {
       "id": "ya-3029980280",
       "title": "Хинкали с сыром",
-      "description": "Сочные хинкали из тонкого теста с начинкой из расплавленного сыра. Они имеют особую форму и структуру, которые делают их уникальными. Вкус блюда сочетает мягкость теста и пикантность сыра (3 шт.)",
+      "description": "Три хинкали из тонкого теста с начинкой из расплавленного сыра.",
       "price": 590.0,
       "promoPrice": 472.0,
       "weight": "300 г",
@@ -362,12 +372,13 @@
           "minSelected": 0,
           "maxSelected": 4
         }
-      ]
+      ],
+      "sourceDescription": "Сочные хинкали из тонкого теста с начинкой из расплавленного сыра. Они имеют особую форму и структуру, которые делают их уникальными. Вкус блюда сочетает мягкость теста и пикантность сыра (3 шт.)"
     },
     {
       "id": "ya-3029980251",
       "title": "Сочные Хинкали с бараниной",
-      "description": "Сочные хинкали с бараниной! Традиционный рецепт, только мясо и тесто – ничего лишнего. Порадуйте себя и близких вкусной и сытной едой (3 шт.)",
+      "description": "Три хинкали с бараниной. Мясная начинка и тесто - ничего лишнего.",
       "price": 660.0,
       "promoPrice": 528.0,
       "weight": "300 г",
@@ -376,12 +387,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/fc475b43ace743e5b050ee8dc180923f-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Сочные хинкали с бараниной! Традиционный рецепт, только мясо и тесто – ничего лишнего. Порадуйте себя и близких вкусной и сытной едой (3 шт.)"
     },
     {
       "id": "ya-3029980248",
       "title": "Хинкали с грибами",
-      "description": "Ищете что-то сытное и вкусное? В нашей подборке традиционных грузинских блюд есть отличное угощение — аппетитные мешочки из тонкого теста с сочной начинкой из ароматных грибов (3 шт.)",
+      "description": "Три хинкали из тонкого теста с грибной начинкой. Вариант для тех, кому сегодня хочется грибов.",
       "price": 580.0,
       "promoPrice": 464.0,
       "weight": "300 г",
@@ -436,12 +448,13 @@
           "minSelected": 0,
           "maxSelected": 4
         }
-      ]
+      ],
+      "sourceDescription": "Ищете что-то сытное и вкусное? В нашей подборке традиционных грузинских блюд есть отличное угощение — аппетитные мешочки из тонкого теста с сочной начинкой из ароматных грибов (3 шт.)"
     },
     {
       "id": "ya-3031551630",
       "title": "Хинкали с лососем, креветками в сливочном соусе",
-      "description": "",
+      "description": "Хинкали с лососем и креветками в сливочном соусе. Если хочется попробовать что-то кроме привычной мясной начинки.",
       "price": 750.0,
       "promoPrice": 600.0,
       "weight": "300 г",
@@ -450,12 +463,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18022535/9ddd3fd84acd4683a0471edba16d200a-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3029980249",
       "title": "Горячие хинкали с сыром",
-      "description": "Сочные хинкали из тонкого теста с начинкой из расплавленного сыра. Они имеют особую форму и структуру, которые делают их уникальными. Вкус блюда сочетает мягкость теста и пикантность сыра (6 шт.)",
+      "description": "Шесть горячих хинкали с расплавленным сыром внутри. Порцию можно разделить на двоих.",
       "price": 1150.0,
       "promoPrice": 920.0,
       "weight": "600 г",
@@ -464,12 +478,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/27598b953f634ac387f66b4bec8e5835-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Сочные хинкали из тонкого теста с начинкой из расплавленного сыра. Они имеют особую форму и структуру, которые делают их уникальными. Вкус блюда сочетает мягкость теста и пикантность сыра (6 шт.)"
     },
     {
       "id": "ya-3029980252",
       "title": "Горячие хинкали с грибами",
-      "description": "Ищете что-то сытное и вкусное? В нашей подборке традиционных грузинских блюд есть отличное угощение - аппетитные мешочки из тонкого теста с сочной начинкой из ароматных грибов (6 шт.)",
+      "description": "Шесть горячих хинкали из тонкого теста с грибной начинкой.",
       "price": 1099.0,
       "promoPrice": 879.2,
       "weight": "600 г",
@@ -478,12 +493,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/e538f7652bf7484695f68d9ff827e2ab-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Ищете что-то сытное и вкусное? В нашей подборке традиционных грузинских блюд есть отличное угощение - аппетитные мешочки из тонкого теста с сочной начинкой из ароматных грибов (6 шт.)"
     },
     {
       "id": "ya-3029980333",
       "title": "Салат Цезарь с креветками",
-      "description": "Погрузитесь в мир вкуса с нашим изысканным салатом из свежих листьев романо и айсберга, дополненным аппетитными сухариками, сочными помидорами черри и нежными креветками. Всё это гармонично сочетается с насыщенным соусом и тёртым пармезаном",
+      "description": "Романо и айсберг с креветками, сухариками, помидорами черри, соусом и тертым пармезаном.",
       "price": 799.0,
       "promoPrice": 639.2,
       "weight": "220 г",
@@ -492,12 +508,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18531941/06a14f36058f4f5395aa7d7dab3ab366-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Погрузитесь в мир вкуса с нашим изысканным салатом из свежих листьев романо и айсберга, дополненным аппетитными сухариками, сочными помидорами черри и нежными креветками. Всё это гармонично сочетается с насыщенным соусом и тёртым пармезаном"
     },
     {
       "id": "ya-3029980355",
       "title": "Салат по-грузински",
-      "description": "Погрузитесь в атмосферу грузинской кухни с нашим салатом, где свежие овощи - помидоры и огурцы - гармонично сочетаются с пикантной кинзой, ароматным грецким орехом и остринкой перца",
+      "description": "Помидоры и огурцы с кинзой, грецким орехом и перцем. Овощной салат с грузинским характером.",
       "price": 699.0,
       "promoPrice": 559.2,
       "weight": "200 г",
@@ -506,12 +523,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20179955/8620b46278fa439b96810071ea103b93-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Погрузитесь в атмосферу грузинской кухни с нашим салатом, где свежие овощи - помидоры и огурцы - гармонично сочетаются с пикантной кинзой, ароматным грецким орехом и остринкой перца"
     },
     {
       "id": "ya-3029980338",
       "title": "Салат греческий",
-      "description": "",
+      "description": "Греческий салат к обеду или ужину. Можно взять как дополнение к горячему.",
       "price": 699.0,
       "promoPrice": 559.2,
       "weight": "200 г",
@@ -520,12 +538,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18772141/c0ce7e74d77e40299393c63d1f892805-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3029980367",
       "title": "Салат с жареными баклажанами",
-      "description": "Погрузитесь в гармонию вкусов с нашим салатом, где нежность творожного сыра и свежесть помидоров переплетаются с дымным ароматом жареных баклажанов, а пикантность соусов чили и кисло-сладкого придаёт блюду неповторимый характер, дополненный зеленью кинзы и кунжутом",
+      "description": "Жареные баклажаны с помидорами, творожным сыром, кинзой и кунжутом. Заправка - соусы чили и кисло-сладкий.",
       "price": 699.0,
       "promoPrice": 559.2,
       "weight": "250 г",
@@ -534,12 +553,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18174674/06e199310f75489e95a3645dba5d417d-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Погрузитесь в гармонию вкусов с нашим салатом, где нежность творожного сыра и свежесть помидоров переплетаются с дымным ароматом жареных баклажанов, а пикантность соусов чили и кисло-сладкого придаёт блюду неповторимый характер, дополненный зеленью кинзы и кунжутом"
     },
     {
       "id": "ya-3031151355",
       "title": "Рулетки из баклажанов",
-      "description": "Нежные рулетки, приготовленные из баклажанов. Имеют лёгкую хрустящую корочку и мягкую текстуру внутри. Отлично подойдут в качестве закуски.",
+      "description": "Рулетики из баклажанов с мягкой серединой и легкой корочкой. Подойдут как закуска перед горячим.",
       "price": 590.0,
       "promoPrice": 472.0,
       "weight": "100 г",
@@ -548,12 +568,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18531941/e9ac096939744f999cee43be09c5c800-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Нежные рулетки, приготовленные из баклажанов. Имеют лёгкую хрустящую корочку и мягкую текстуру внутри. Отлично подойдут в качестве закуски."
     },
     {
       "id": "ya-3031151352",
       "title": "Пхали из зелёной фасоли",
-      "description": "",
+      "description": "Пхали из зеленой фасоли - небольшая грузинская закуска к общему столу.",
       "price": 590.0,
       "promoPrice": 472.0,
       "weight": "100 г",
@@ -562,12 +583,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/5c90e2e18fef48339050aad1737b0346-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151353",
       "title": "Пхали со свеклой",
-      "description": "",
+      "description": "Пхали со свеклой. Можно взять отдельно или собрать несколько видов закусок на всех.",
       "price": 550.0,
       "promoPrice": 440.0,
       "weight": "100 г",
@@ -576,12 +598,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20193126/50d04e3fda634c8ba1e8048a1ca471d6-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151711",
       "title": "Аджепсандал",
-      "description": "Аджепсандал — аппетитная закуска, которая порадует любителей ярких вкусов. В её составе — сочные баклажаны, перцы, помидоры, морковь, лук и чеснок. Аджепсандал станет отличным дополнением к вашему столу!",
+      "description": "Овощная закуска из баклажанов, перца, помидоров, моркови, лука и чеснока.",
       "price": 599.0,
       "promoPrice": 479.2,
       "weight": "300 г",
@@ -590,12 +613,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/75648c1418984053912572a61113feac-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Аджепсандал — аппетитная закуска, которая порадует любителей ярких вкусов. В её составе — сочные баклажаны, перцы, помидоры, морковь, лук и чеснок. Аджепсандал станет отличным дополнением к вашему столу!"
     },
     {
       "id": "ya-3031151712",
       "title": "Ассорти соленья",
-      "description": "Закуска «Ассорти соленья» — идеальное дополнение к любому столу! В ассорти — хрустящие огурцы, пикантная капуста, сочный перец, помидоры и ароматная черемша — каждый найдёт в этом наборе что-то по душе.",
+      "description": "Ассорти из соленых огурцов, капусты, перца, помидоров и черемши. Хорошее дополнение к мясу.",
       "price": 650.0,
       "promoPrice": 520.0,
       "weight": "250 г",
@@ -604,12 +628,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18174674/64f40a6a322b499c8b0a91c0355a7174-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Закуска «Ассорти соленья» — идеальное дополнение к любому столу! В ассорти — хрустящие огурцы, пикантная капуста, сочный перец, помидоры и ароматная черемша — каждый найдёт в этом наборе что-то по душе."
     },
     {
       "id": "ya-3031151713",
       "title": "Ассорти кавказских сыров",
-      "description": "Закуска из трёх видов кавказских сыров. В ассорти — сулугуни, имеретинский сыр и чечил. Разные текстуры и вкусы сыров гармонично сочетаются друг с другом.",
+      "description": "Сулугуни, имеретинский сыр и чечил на одной тарелке. Можно попробовать все три и выбрать любимый.",
       "price": 899.0,
       "promoPrice": 719.2,
       "weight": "200 г",
@@ -618,12 +643,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18125102/328a8b4d8850404784004c2f937085d6-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Закуска из трёх видов кавказских сыров. В ассорти — сулугуни, имеретинский сыр и чечил. Разные текстуры и вкусы сыров гармонично сочетаются друг с другом."
     },
     {
       "id": "ya-3031151354",
       "title": "Пхали со шпинатом",
-      "description": "",
+      "description": "Пхали со шпинатом - грузинская закуска, которую удобно взять к общему столу.",
       "price": 590.0,
       "promoPrice": 472.0,
       "weight": "100 г",
@@ -632,12 +658,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18531941/8a6f2c4d66174081af66bb54e64a5be9-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151358",
       "title": "Сулугуни",
-      "description": "",
+      "description": "Сыр сулугуни отдельной порцией. Подойдет к хлебу или в дополнение к другим закускам.",
       "price": 359.0,
       "promoPrice": 287.2,
       "weight": "150 г",
@@ -646,12 +673,13 @@
       "sourceImageUrl": "",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031551077",
       "title": "Комбо Свиные Ребра",
-      "description": "",
+      "description": "Комбо со свиными ребрами. Вариант для тех, кто хочет собрать заказ вокруг любимого мяса.",
       "price": 3200.0,
       "promoPrice": 2560.0,
       "weight": "1 кг",
@@ -660,12 +688,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18174674/02dbf34559d4454ab550ac8c4d647aac-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151234",
       "title": "Хинкали изобилие",
-      "description": "Хинкали свинина-говядина (12 шт.), баранина (12 шт.), с сыром (12 шт.), с грибами (12 шт.)",
+      "description": "По 12 хинкали со свининой и говядиной, бараниной, сыром и грибами. Всего 48 штук на большую компанию.",
       "price": 11100.0,
       "promoPrice": 8880.0,
       "weight": "5 кг",
@@ -674,12 +703,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18012291/e260a6598e5943d7a84e6e2c560c1596-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Хинкали свинина-говядина (12 шт.), баранина (12 шт.), с сыром (12 шт.), с грибами (12 шт.)"
     },
     {
       "id": "ya-3031151242",
       "title": "Набор Сырный",
-      "description": "Хачапури по-аджарски/по-имеретински/по-мегрельски/кубдари",
+      "description": "Набор из хачапури по-аджарски, по-имеретински, по-мегрельски и кубдари. Несколько видов выпечки к общему столу.",
       "price": 4750.0,
       "promoPrice": 3800.0,
       "weight": "1,85 кг",
@@ -688,12 +718,13 @@
       "sourceImageUrl": "",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Хачапури по-аджарски/по-имеретински/по-мегрельски/кубдари"
     },
     {
       "id": "ya-3031151239",
       "title": "Набор Premium на 8-10 человек",
-      "description": "Люля куриный 2 шт., люля бараний 2 шт.,  люля свино-говяжий 2 шт., баранина 2 шт., свинина 2 шт., говядина 2 шт., куриные крылья 2 шт., куриное филе 2 шт., картошка беби 2 шт., грибы 2 шт., шашлык из индейки 2 шт., овощи на мангале 2 шт., ассорти солений, ассорти кавказских сыров, лепешка 4 шт., соусы 6 шт., маринованный лук, лаваш армянский",
+      "description": "Набор на 8-10 человек: люля-кебабы, баранина, свинина, говядина, курица и индейка с картофелем, грибами и овощами на мангале. В комплекте соленья, кавказские сыры, лепешки, соусы, маринованный лук и армянский лаваш.",
       "price": 29999.0,
       "promoPrice": 23999.2,
       "weight": "6 кг",
@@ -702,12 +733,13 @@
       "sourceImageUrl": "",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Люля куриный 2 шт., люля бараний 2 шт.,  люля свино-говяжий 2 шт., баранина 2 шт., свинина 2 шт., говядина 2 шт., куриные крылья 2 шт., куриное филе 2 шт., картошка беби 2 шт., грибы 2 шт., шашлык из индейки 2 шт., овощи на мангале 2 шт., ассорти солений, ассорти кавказских сыров, лепешка 4 шт., соусы 6 шт., маринованный лук, лаваш армянский"
     },
     {
       "id": "ya-3031551235",
       "title": "Набор Premium 4-6 человек",
-      "description": "Люля куриный, люля баранина, люля свинина-говядина, баранина, свинина, говядина, куриные крылья, куриное филе, картошка бэби, грибы, шашлык из индейки, овощи на мангале, ассорти солений, ассорти кавказских сыров, лепешка, соусы, маринованный лук, лаваш армянский.",
+      "description": "Набор на 4-6 человек: люля-кебабы, баранина, свинина, говядина, курица и индейка с картофелем, грибами и овощами на мангале. К нему идут соленья, кавказские сыры, лепешка, соусы, маринованный лук и армянский лаваш.",
       "price": 18999.0,
       "promoPrice": 15199.2,
       "weight": "4 кг",
@@ -716,12 +748,13 @@
       "sourceImageUrl": "",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Люля куриный, люля баранина, люля свинина-говядина, баранина, свинина, говядина, куриные крылья, куриное филе, картошка бэби, грибы, шашлык из индейки, овощи на мангале, ассорти солений, ассорти кавказских сыров, лепешка, соусы, маринованный лук, лаваш армянский."
     },
     {
       "id": "ya-3031550886",
       "title": "Сет Овощной",
-      "description": "",
+      "description": "Овощной сет к общему столу. Можно взять в дополнение к мясным блюдам.",
       "price": 2550.0,
       "promoPrice": 2040.0,
       "weight": "1 кг",
@@ -730,12 +763,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17635794/86ebe92604444d0389a7a0163e17d60c-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158284",
       "title": "Сет из люля-кебабов",
-      "description": "",
+      "description": "Сет из люля-кебабов. Удобный вариант, когда собираете заказ на компанию.",
       "price": 2950.0,
       "promoPrice": 2360.0,
       "weight": "1 кг",
@@ -744,12 +778,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/1b4dddb261b8496282bee31dadd7d107-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151494",
       "title": "Сет Куриный",
-      "description": "",
+      "description": "Куриный сет для общего стола. Если из мяса предпочитаете птицу.",
       "price": 3490.0,
       "promoPrice": 2792.0,
       "weight": "1,1 кг",
@@ -758,12 +793,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/16c54453ac304054946244e59be9b2cf-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151472",
       "title": "Большая порция горячих куриных крылышек",
-      "description": "",
+      "description": "Большая порция горячих куриных крылышек. Можно разделить на компанию или взять к общему заказу.",
       "price": 2699.0,
       "promoPrice": 2159.2,
       "weight": "1 кг",
@@ -772,12 +808,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/61f0e77a1b444952a3b8712ae58f87cd-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031551045",
       "title": "Сет Говядина",
-      "description": "",
+      "description": "Сет с говядиной для любителей мясных блюд. Подойдет к общему столу.",
       "price": 4150.0,
       "promoPrice": 3320.0,
       "weight": "1,1 кг",
@@ -786,12 +823,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18125102/cc9850c9040b4c11984f2227fabe1048-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031156668",
       "title": "Сет Рыбный",
-      "description": "",
+      "description": "Рыбный сет для общего стола. Вариант, когда вместо мяса хочется рыбы.",
       "price": 6300.0,
       "promoPrice": 5040.0,
       "weight": "1 кг",
@@ -800,12 +838,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18022535/f764910442b943fa8c6cda9a176c03f1-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151488",
       "title": "Сет Баранина",
-      "description": "",
+      "description": "Сет с бараниной. Можно взять к общему столу и дополнить гарнирами.",
       "price": 4300.0,
       "promoPrice": 3440.0,
       "weight": "900 г",
@@ -814,12 +853,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20193126/a5983b5083d241fcb358c7af2d1900b7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031550896",
       "title": "Сет Свинина",
-      "description": "",
+      "description": "Сет со свининой для общего заказа. К нему можно отдельно выбрать гарниры и соусы.",
       "price": 3799.0,
       "promoPrice": 3039.2,
       "weight": "1,1 кг",
@@ -828,12 +868,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/54659d54e2fe451ab02d9f79227bfef6-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3030960565",
       "title": "Картошка по-деревенски",
-      "description": "",
+      "description": "Картошка по-деревенски - простой гарнир к мясу, птице или рыбе.",
       "price": 400.0,
       "promoPrice": 320.0,
       "weight": "150 г",
@@ -842,12 +883,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17751752/d7eb758a52dc4f05a578dbc673772146-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3030960564",
       "title": "Картошка фри",
-      "description": "",
+      "description": "Картошка фри к основному блюду или на перекус. Соус можно выбрать отдельно.",
       "price": 400.0,
       "promoPrice": 320.0,
       "weight": "150 г",
@@ -856,12 +898,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18125102/d8f900a8620349d89bc64b9dccc7d4f2-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742614",
       "title": "Картофель по-деревенски с грибами",
-      "description": "",
+      "description": "Картофель по-деревенски с грибами. Можно взять как гарнир или отдельную порцию к столу.",
       "price": 700.0,
       "promoPrice": 560.0,
       "weight": "200 г",
@@ -870,12 +913,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20380622/28cb6fa49a7442209631a18a3fcd66ef-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151443",
       "title": "Суп куриный",
-      "description": "",
+      "description": "Куриный суп на обед. Подойдет, если хочется начать с первого блюда.",
       "price": 639.0,
       "promoPrice": 511.2,
       "weight": "350 г",
@@ -884,12 +928,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/0f61f940786a4dae96e99e68f3bfce83-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151441",
       "title": "Суп Борщ",
-      "description": "",
+      "description": "Борщ для привычного домашнего обеда. Можно дополнить порцией хлеба.",
       "price": 679.0,
       "promoPrice": 543.2,
       "weight": "350 г",
@@ -898,12 +943,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18772141/a77571c3f98b4d9498c479d7eacf5127-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151442",
       "title": "Суп Харчо",
-      "description": "",
+      "description": "Харчо - суп грузинской кухни. Хороший вариант, чтобы начать обед с горячего.",
       "price": 739.0,
       "promoPrice": 591.2,
       "weight": "350 г",
@@ -912,12 +958,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/af06a13c602f4242a19f6d68057fb2b0-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151439",
       "title": "Крем-суп Грибной",
-      "description": "",
+      "description": "Грибной крем-суп с мягкой текстурой. Для тех, кто любит грибы и густые супы.",
       "price": 699.0,
       "promoPrice": 559.2,
       "weight": "300 г",
@@ -926,12 +973,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/82507a368c5347fc8156a690310e364a-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151444",
       "title": "Дорадо на мангале",
-      "description": "",
+      "description": "Дорадо, приготовленная на мангале. Гарнир можно выбрать отдельно.",
       "price": 1450.0,
       "promoPrice": 1160.0,
       "weight": "350 г",
@@ -940,12 +988,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18125102/2ea669a73265473da3a966d5872f10cc-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151446",
       "title": "Стейк из лосося на мангале",
-      "description": "",
+      "description": "Стейк из лосося на мангале. Можно дополнить овощами или картофелем.",
       "price": 1650.0,
       "promoPrice": 1320.0,
       "weight": "180 г",
@@ -954,12 +1003,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20022421/88fe39de1c174c7b884518591c712c8b-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151445",
       "title": "Сибас на мангале",
-      "description": "",
+      "description": "Сибас на мангале. Рыбное горячее к обеду или ужину.",
       "price": 1450.0,
       "promoPrice": 1160.0,
       "weight": "350 г",
@@ -968,12 +1018,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18531941/f279ca6155634446b6b2f59ea31a294f-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151513",
       "title": "Шашлык из свиной шейки",
-      "description": "",
+      "description": "Шашлык из свиной шейки. К нему можно отдельно взять гарнир и любимый соус.",
       "price": 950.0,
       "promoPrice": 760.0,
       "weight": "200 г",
@@ -982,12 +1033,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/eb23086cd06f44d1a402e6ad0ff2fb74-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742630",
       "title": "Шашлык из свиной шейки L",
-      "description": "",
+      "description": "Шашлык из свиной шейки в порции L. Когда хочется взять побольше.",
       "price": 4750.0,
       "promoPrice": 3800.0,
       "weight": "1 кг",
@@ -996,12 +1048,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18916937/d6af5771e27c415f8ff1bbc0e579f0e6-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151518",
       "title": "Шашлык из каре ягненка",
-      "description": "",
+      "description": "Шашлык из каре ягненка. Вариант для тех, кто любит мясо на косточке.",
       "price": 1799.0,
       "promoPrice": 1439.2,
       "weight": "270 г",
@@ -1010,12 +1063,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/69b4c43a7cb74c2e9b373c870f63e8a7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151522",
       "title": "Шашлык из куриной грудки",
-      "description": "",
+      "description": "Шашлык из куриной грудки. Можно дополнить овощами, картофелем или соусом.",
       "price": 699.0,
       "promoPrice": 559.2,
       "weight": "200 г",
@@ -1024,12 +1078,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/76d886adb4044c40b493a848de97d62c-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742634",
       "title": "Шашлык из куриных крылышек L",
-      "description": "Сочные жареные куриные крылья с аппетитной корочкой, приготовленные на огне. Идеальный выбор для любителей блюд на гриле",
+      "description": "Куриные крылышки с корочкой, приготовленные на огне. Увеличенная порция L.",
       "price": 2690.0,
       "promoPrice": 2152.0,
       "weight": "1 кг",
@@ -1038,12 +1093,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20022421/c60cd8a71f54463fba1bcab45f6c5ab7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Сочные жареные куриные крылья с аппетитной корочкой, приготовленные на огне. Идеальный выбор для любителей блюд на гриле"
     },
     {
       "id": "ya-3031151503",
       "title": "Люля-кебаб из курицы",
-      "description": "",
+      "description": "Люля-кебаб из курицы. Для тех, кто предпочитает птицу в привычных блюдах на гриле.",
       "price": 729.0,
       "promoPrice": 583.2,
       "weight": "200 г",
@@ -1052,12 +1108,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18531941/acb9a9bc2d8248989bacbe1b57300491-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151502",
       "title": "Люля-кебаб из говядины и свинины",
-      "description": "",
+      "description": "Люля-кебаб из говядины и свинины. Два вида мяса в одной порции.",
       "price": 950.0,
       "promoPrice": 760.0,
       "weight": "200 г",
@@ -1066,12 +1123,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18174674/2ef2def32c294945b14607a8827aa166-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151526",
       "title": "Шашлык из филе куриного бедра",
-      "description": "",
+      "description": "Шашлык из филе куриного бедра. Можно взять отдельно или с гарниром.",
       "price": 799.0,
       "promoPrice": 639.2,
       "weight": "200 г",
@@ -1080,12 +1138,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18174674/8b4c5371f5aa420090a1bb8b36a59568-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151505",
       "title": "Овощи гриль",
-      "description": "",
+      "description": "Овощи гриль к мясу, птице или рыбе. Можно заказать и отдельной порцией к столу.",
       "price": 539.0,
       "promoPrice": 431.2,
       "weight": "200 г",
@@ -1094,12 +1153,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17751752/0651e2f3407a4fb2b740e0d10c16903e-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742625",
       "title": "Люля-кебаб Баранина на углях L",
-      "description": "",
+      "description": "Люля-кебаб из баранины на углях в порции L. Для тех, кто хочет порцию побольше.",
       "price": 5699.0,
       "promoPrice": 4559.2,
       "weight": "1 кг",
@@ -1154,12 +1214,13 @@
           "minSelected": 0,
           "maxSelected": 4
         }
-      ]
+      ],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742633",
       "title": "Шашлык из каре ягненка L",
-      "description": "",
+      "description": "Шашлык из каре ягненка в порции L. Увеличенная порция мяса на косточке.",
       "price": 6450.0,
       "promoPrice": 5160.0,
       "weight": "1 кг",
@@ -1168,12 +1229,13 @@
       "sourceImageUrl": "https://eda.yandex/images/19855951/04c4ed6ed9963f022a45808777c3afc7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151525",
       "title": "Шашлык из филе грудки индейки",
-      "description": "",
+      "description": "Шашлык из филе грудки индейки. Еще один вариант для любителей птицы.",
       "price": 899.0,
       "promoPrice": 719.2,
       "weight": "200 г",
@@ -1182,12 +1244,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20022421/c44a7fafe6c04bcf9d3a4654df049b36-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151504",
       "title": "Молодой бэби-картофель",
-      "description": "",
+      "description": "Молодой бэби-картофель. Простой гарнир к блюдам с мангала.",
       "price": 529.0,
       "promoPrice": 423.2,
       "weight": "200 г",
@@ -1196,12 +1259,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/dd2ddfafeaba4f38bdd1dd025f9b4cd1-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742628",
       "title": "Люля-кебаб из курицы L",
-      "description": "",
+      "description": "Люля-кебаб из курицы в порции L. Когда обычной порции мало.",
       "price": 3600.0,
       "promoPrice": 2880.0,
       "weight": "1 кг",
@@ -1210,12 +1274,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17742006/b44ea404e2434834ace3728c903ee5ed-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742626",
       "title": "Люля-кебаб из говядины и свинины L",
-      "description": "",
+      "description": "Люля-кебаб из говядины и свинины в порции L. Побольше любимого мясного сочетания.",
       "price": 4699.0,
       "promoPrice": 3759.2,
       "weight": "1 кг",
@@ -1224,12 +1289,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18916937/9e6b03e564774c769e51ef4fd837de93-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742637",
       "title": "Шашлык из филе грудки индейки L",
-      "description": "",
+      "description": "Шашлык из филе грудки индейки в порции L. Увеличенная порция для любителей птицы.",
       "price": 4499.0,
       "promoPrice": 3599.2,
       "weight": "1 кг",
@@ -1238,12 +1304,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20012354/30f7e946d2c2449d984b548bcd77f900-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742641",
       "title": "Шашлык из куриной грудки L",
-      "description": "",
+      "description": "Шашлык из куриной грудки в порции L. Можно разделить или взять для себя побольше.",
       "price": 3499.0,
       "promoPrice": 2799.2,
       "weight": "1 кг",
@@ -1252,12 +1319,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17742006/2ba970337dd643c58113f09f874e4038-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742640",
       "title": "Шашлык из филе куриного бедра  L",
-      "description": "",
+      "description": "Шашлык из филе куриного бедра в порции L. Гарнир и соус можно выбрать отдельно.",
       "price": 3999.0,
       "promoPrice": 3199.2,
       "weight": "1 кг",
@@ -1266,12 +1334,13 @@
       "sourceImageUrl": "https://eda.yandex/images/21029937/7b9c1e31f6234a7d92929338c5eacae4-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151499",
       "title": "Грибы на углях",
-      "description": "",
+      "description": "Грибы, приготовленные на углях. Можно взять как гарнир или отдельную закуску.",
       "price": 629.0,
       "promoPrice": 503.2,
       "weight": "200 г",
@@ -1280,12 +1349,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17751752/c6ad5fe9c0c54bb3af4ed3364bbf7cb2-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151517",
       "title": "Шашлык из говядины",
-      "description": "",
+      "description": "Шашлык из говядины. К нему подойдут овощи, картофель и соус на выбор.",
       "price": 1490.0,
       "promoPrice": 1192.0,
       "weight": "200 г",
@@ -1294,12 +1364,13 @@
       "sourceImageUrl": "https://eda.yandex/images/19925171/fc7c79f5ee464239908320677812e4b9-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151501",
       "title": "Люля-кебаб Баранина на углях",
-      "description": "",
+      "description": "Люля-кебаб из баранины, приготовленный на углях. Для любителей баранины и блюд с мангала.",
       "price": 1150.0,
       "promoPrice": 920.0,
       "weight": "200 г",
@@ -1354,12 +1425,13 @@
           "minSelected": 0,
           "maxSelected": 4
         }
-      ]
+      ],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742643",
       "title": "Шашлык из бараньей мякоти L",
-      "description": "",
+      "description": "Шашлык из бараньей мякоти в порции L. Увеличенная порция для сытного обеда или ужина.",
       "price": 5499.0,
       "promoPrice": 4399.2,
       "weight": "1 кг",
@@ -1368,12 +1440,13 @@
       "sourceImageUrl": "https://eda.yandex/images/19855951/0441030a2ee642773fbe5e8086ff8e71-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036742631",
       "title": "Шашлык из свиных рёбер L",
-      "description": "",
+      "description": "Шашлык из свиных ребер в порции L. Для тех, кто предпочитает мясо на косточке.",
       "price": 3199.0,
       "promoPrice": 2559.2,
       "weight": "1 кг",
@@ -1382,12 +1455,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20260744/5dea242feb1042ad87f159ddad1eb5e3-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151520",
       "title": "Шашлык из куриных крылышек",
-      "description": "Сочные жареные куриные крылья с аппетитной корочкой, приготовленные на огне. Идеальный выбор для любителей блюд на гриле (3 шт.)",
+      "description": "Три куриных крылышка с корочкой, приготовленные на огне.",
       "price": 790.0,
       "promoPrice": 632.0,
       "weight": "300 г",
@@ -1396,12 +1470,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17751752/1418a7f339e449ff8a03fc728ff1819a-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Сочные жареные куриные крылья с аппетитной корочкой, приготовленные на огне. Идеальный выбор для любителей блюд на гриле (3 шт.)"
     },
     {
       "id": "ya-3036742642",
       "title": "Шашлык из говядины L",
-      "description": "",
+      "description": "Шашлык из говядины в порции L. Можно дополнить гарниром и соусом на свой вкус.",
       "price": 5999.0,
       "promoPrice": 4799.2,
       "weight": "1 кг",
@@ -1410,12 +1485,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20022421/f8b5fc46520e4da7a62ffe8e9f43e034-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151514",
       "title": "Шашлык из свиных рёбер",
-      "description": "",
+      "description": "Шашлык из свиных ребер. Можно взять к общему столу или отдельной порцией.",
       "price": 799.0,
       "promoPrice": 639.2,
       "weight": "250 г",
@@ -1424,12 +1500,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17742006/f766f316907b48e593e63e0f7e5da0f5-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151515",
       "title": "Шашлык из бараньей мякоти",
-      "description": "",
+      "description": "Шашлык из бараньей мякоти. Вариант для тех, кто предпочитает баранину без косточки.",
       "price": 1150.0,
       "promoPrice": 920.0,
       "weight": "200 г",
@@ -1438,12 +1515,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17635794/c9be217d8e1446849405680956559d66-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151530",
       "title": "Лаваш армянский",
-      "description": "",
+      "description": "Армянский лаваш к мясу, сыру и закускам. Удобно взять к общему заказу.",
       "price": 99.0,
       "promoPrice": 79.2,
       "weight": "100 г",
@@ -1452,12 +1530,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/8cf06b69e009471bad6bc86c04621548-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151532",
       "title": "Хлеб Шоти",
-      "description": "",
+      "description": "Грузинский хлеб шоти. Подойдет к супу, горячему или закускам.",
       "price": 129.0,
       "promoPrice": 103.2,
       "weight": "120 г",
@@ -1466,12 +1545,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18155812/1106949c52d84a1d878c8ca3bad7dd79-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151533",
       "title": "Кока-кола в стекле",
-      "description": "",
+      "description": "Кока-кола в стеклянной бутылке. Привычный напиток к обеду или ужину.",
       "price": 299.0,
       "promoPrice": 239.2,
       "weight": "330 мл",
@@ -1480,12 +1560,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/37056da69a7c4e77913d799e7115fdfa-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151541",
       "title": "Натахтари Саперави",
-      "description": "",
+      "description": "Напиток «Натахтари Саперави». Можно взять к основному блюду или отдельно.",
       "price": 369.0,
       "promoPrice": 295.2,
       "weight": "500 мл",
@@ -1494,12 +1575,13 @@
       "sourceImageUrl": "https://eda.yandex/images/19925171/a9319d677c2a43b583803907440bb65c-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151542",
       "title": "Натахтари Крем-сливки",
-      "description": "",
+      "description": "«Натахтари» со вкусом крем-сливок. Вариант для тех, кто любит сладкие напитки.",
       "price": 369.0,
       "promoPrice": 295.2,
       "weight": "500 мл",
@@ -1508,12 +1590,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18531941/30fc182e699f42f5a6a154620f2bc51a-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151537",
       "title": "Вода Mever газированная",
-      "description": "",
+      "description": "Газированная вода Mever. Для тех, кто предпочитает воду к еде.",
       "price": 330.0,
       "promoPrice": 264.0,
       "weight": "500 мл",
@@ -1522,12 +1605,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18125102/d202a53d5ca14a998073740409bafc4c-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151535",
       "title": "Fanta в стекле",
-      "description": "",
+      "description": "Fanta в стеклянной бутылке. Напиток к основному заказу или на перекус.",
       "price": 299.0,
       "promoPrice": 239.2,
       "weight": "330 мл",
@@ -1536,12 +1620,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/63ace6914fad4f0faf3f28513048e54f-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151538",
       "title": "Вода Рычал-Су",
-      "description": "Минеральная газированная",
+      "description": "Минеральная газированная вода «Рычал-Су» к обеду или ужину.",
       "price": 339.0,
       "promoPrice": 271.2,
       "weight": "500 мл",
@@ -1550,12 +1635,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/94bc575639394b9f8e3e074eab451149-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "Минеральная газированная"
     },
     {
       "id": "ya-3031151540",
       "title": "Натахтари Груша",
-      "description": "",
+      "description": "«Натахтари» со вкусом груши. Можно взять к еде или десерту.",
       "price": 369.0,
       "promoPrice": 295.2,
       "weight": "500 мл",
@@ -1564,12 +1650,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18155812/681254391344436a99738000302e7298-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151543",
       "title": "Соус Сацебели",
-      "description": "",
+      "description": "Соус сацебели к шашлыку и другим горячим блюдам. Можно добавить к заказу отдельно.",
       "price": 149.0,
       "promoPrice": 119.2,
       "weight": "50 мл",
@@ -1578,12 +1665,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/0af784ad195c408e86ca7641456234ae-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151546",
       "title": "Соус чесночный",
-      "description": "",
+      "description": "Чесночный соус к мясу, птице или картофелю. Для тех, кто любит чесночный вкус.",
       "price": 149.0,
       "promoPrice": 119.2,
       "weight": "50 мл",
@@ -1592,12 +1680,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17689586/fbd999d12b8d4facb3c1163bdf0071bf-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151547",
       "title": "Ткемали зеленый",
-      "description": "",
+      "description": "Зеленый ткемали к мясу и блюдам с мангала. Можно взять отдельно к любимому шашлыку.",
       "price": 149.0,
       "promoPrice": 119.2,
       "weight": "50 мл",
@@ -1606,12 +1695,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17726510/8d107de56347496ba37f99a2a5d6da1e-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031551063",
       "title": "Соус Бургер",
-      "description": "",
+      "description": "Соус «Бургер» к основному блюду или картофелю. Небольшое дополнение к заказу.",
       "price": 149.0,
       "promoPrice": 119.2,
       "weight": "50 г",
@@ -1620,12 +1710,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17689586/e18ace442e4c44cb8ce3647c09b8724f-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151549",
       "title": "Соус сырный",
-      "description": "",
+      "description": "Сырный соус к картошке и горячим блюдам. Если хочется добавить еще немного сырного вкуса.",
       "price": 149.0,
       "promoPrice": 119.2,
       "weight": "50 мл",
@@ -1634,12 +1725,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/f149f5fb373744f2a11815d3100829b7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151548",
       "title": "Соус барбекю",
-      "description": "",
+      "description": "Соус барбекю к мясу, крылышкам или картофелю. Можно заказать отдельно.",
       "price": 149.0,
       "promoPrice": 119.2,
       "weight": "50 мл",
@@ -1648,26 +1740,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20193126/c850307525394c55ac62f9db541b0733-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
-    },
-    {
-      "id": "ya-3034193646",
-      "title": "Сой",
-      "description": "",
-      "price": 1.0,
-      "promoPrice": 0.8,
-      "weight": "10 г",
-      "categoryId": "ya-5004966810",
-      "imageUrl": "",
-      "sourceImageUrl": "",
-      "ingredients": "",
-      "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3036678725",
       "title": "Зеленый чай",
-      "description": "",
+      "description": "Зеленый чай к еде или десерту. Для тех, кто предпочитает чай другим напиткам.",
       "price": 1.0,
       "promoPrice": 0.8,
       "weight": "1 г",
@@ -1676,12 +1755,13 @@
       "sourceImageUrl": "",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151555",
       "title": "Осетинский пирог с мясом и сыром",
-      "description": "",
+      "description": "Осетинский пирог с мясом и сыром. Сытная выпечка к общему столу или отдельному заказу.",
       "price": 1259.0,
       "promoPrice": 1007.2,
       "weight": "600 г",
@@ -1690,12 +1770,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18174674/62c575bc6db54fe1925b99bf01c5b651-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151556",
       "title": "Осетинский пирог с сыром и зеленью",
-      "description": "30 см",
+      "description": "Осетинский пирог с сыром и зеленью, диаметром 30 см. Удобно разделить на несколько порций.",
       "price": 1059.0,
       "promoPrice": 847.2,
       "weight": "600 г",
@@ -1704,12 +1785,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18916937/0ca1c7693f0f4e7bac98f690349b94ab-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "30 см"
     },
     {
       "id": "ya-3031151552",
       "title": "Осетинский пирог с картофелем и сыром",
-      "description": "30 см",
+      "description": "Осетинский пирог с картофелем и сыром, диаметром 30 см.",
       "price": 1059.0,
       "promoPrice": 847.2,
       "weight": "600 г",
@@ -1718,12 +1800,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/1a3668acb7db4ff7ac68c4c63711778c-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "30 см"
     },
     {
       "id": "ya-3031151551",
       "title": "Осетинский пирог с говяжьим фаршем",
-      "description": "30 см",
+      "description": "Осетинский пирог с говяжьим фаршем, диаметром 30 см. Можно взять на всех.",
       "price": 1199.0,
       "promoPrice": 959.2,
       "weight": "600 г",
@@ -1732,12 +1815,13 @@
       "sourceImageUrl": "https://eda.yandex/images/19925171/944fdfd190b54d80bdc6f49c1aafa066-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "30 см"
     },
     {
       "id": "ya-3031151747",
       "title": "Ламаджо с говядиной",
-      "description": "",
+      "description": "Ламаджо с говядиной. Мясная выпечка для перекуса или в дополнение к общему столу.",
       "price": 475.0,
       "promoPrice": 380.0,
       "weight": "250 г",
@@ -1746,12 +1830,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17768400/e8c38186b02a49d4b98a81133d25d890-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031156838",
       "title": "Пиде с говядиной",
-      "description": "22 см",
+      "description": "Пиде с говядиной размером 22 см. Выпечка с мясной начинкой на обед или перекус.",
       "price": 550.0,
       "promoPrice": 440.0,
       "weight": "220 г",
@@ -1760,12 +1845,13 @@
       "sourceImageUrl": "https://eda.yandex/images/19925171/fa5fc57703364cb680ad38eb976d9945-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "22 см"
     },
     {
       "id": "ya-3031156846",
       "title": "Пиде куриный",
-      "description": "22 см",
+      "description": "Пиде с куриной начинкой размером 22 см. Для тех, кто предпочитает выпечку с птицей.",
       "price": 550.0,
       "promoPrice": 440.0,
       "weight": "220 г",
@@ -1774,12 +1860,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18012291/36359eb91ceb4a349d96b1975f046163-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": "22 см"
     },
     {
       "id": "ya-3031151594",
       "title": "Чашушули",
-      "description": "",
+      "description": "Чашушули - горячее блюдо грузинской кухни. Можно взять на обед и дополнить хлебом.",
       "price": 899.0,
       "promoPrice": 719.2,
       "weight": "300 г",
@@ -1788,12 +1875,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/d1223cca55cb4f8f9310f22d4e60cfb3-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151557",
       "title": "Долма Свинина-говядина",
-      "description": "",
+      "description": "Долма с начинкой из свинины и говядины. Два вида мяса в одном горячем блюде.",
       "price": 850.0,
       "promoPrice": 680.0,
       "weight": "200 г",
@@ -1802,12 +1890,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/6a140ccbdf924eb7a75ee04af16adfac-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151593",
       "title": "Чахохбили",
-      "description": "",
+      "description": "Чахохбили - грузинское горячее к обеду или ужину. Можно дополнить хлебом шоти.",
       "price": 679.0,
       "promoPrice": 543.2,
       "weight": "300 г",
@@ -1816,12 +1905,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17773786/aa464380e01148e688413fdea8af5c88-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151592",
       "title": "Чакапули",
-      "description": "",
+      "description": "Чакапули - горячее блюдо грузинской кухни. Еще один вариант, если хочется попробовать что-то из традиционного меню.",
       "price": 819.0,
       "promoPrice": 655.2,
       "weight": "250 г",
@@ -1830,12 +1920,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17635794/81ce7129e3824968859c52cea48ffb00-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151595",
       "title": "Чкмерули",
-      "description": "",
+      "description": "Чкмерули - грузинское горячее к основному заказу. Подойдет для обеда или ужина.",
       "price": 1350.0,
       "promoPrice": 1080.0,
       "weight": "500 г",
@@ -1844,12 +1935,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/8304b87d5a4f4f8480709ba4bd9ef02d-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151586",
       "title": "Лобио с гурийской капустой",
-      "description": "",
+      "description": "Лобио с гурийской капустой. Можно взять отдельным блюдом или к общему столу.",
       "price": 630.0,
       "promoPrice": 504.0,
       "weight": "300 г",
@@ -1858,12 +1950,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17689586/01cf8e1fd661454892d52270314d973a-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031151591",
       "title": "Цыпленок табака",
-      "description": "",
+      "description": "Цыпленок табака к обеду или ужину. Гарнир и соус можно подобрать отдельно.",
       "price": 1150.0,
       "promoPrice": 920.0,
       "weight": "400 г",
@@ -1872,12 +1965,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20022421/847f2c64bad84739a8fca5e3dae2470b-400x400nocrop.jpeg",
       "ingredients": "",
       "available": true,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158644",
       "title": "Медовик",
-      "description": "",
+      "description": "Медовик к чаю или после основного блюда. Для тех, кто любит медовые десерты.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1886,12 +1980,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18022535/10eb7c9b796d439ea4e601ca467d2c3c-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158667",
       "title": "Наполеон",
-      "description": "",
+      "description": "«Наполеон» - слоеный десерт с кремом. Можно взять к чаю или кофе.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1900,12 +1995,13 @@
       "sourceImageUrl": "https://eda.yandex/images/20022421/6f5fc71f726c431c975a597d7dd1ec24-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158634",
       "title": "Эклер ванильный",
-      "description": "",
+      "description": "Эклер с ванильной начинкой. Небольшой десерт к чаю.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1914,12 +2010,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/4e0f21c06bc0494bbfb569dda5518098-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158637",
       "title": "Эклер шоколадный",
-      "description": "",
+      "description": "Шоколадный эклер к чаю или после обеда. Для любителей шоколадных десертов.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1928,12 +2025,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18753459/3c88ed73c40642ca934f082bb993c3a7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031156562",
       "title": "Творожное кольцо",
-      "description": "",
+      "description": "Творожное кольцо для сладкого перекуса. Можно добавить к заказу вместе с чаем.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1942,12 +2040,13 @@
       "sourceImageUrl": "https://eda.yandex/images/18155812/d11c20ccc2c44fed8e52c75ce640c660-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158653",
       "title": "Торт прага",
-      "description": "",
+      "description": "Торт «Прага» к чаю или на десерт. Небольшая порция для завершения обеда.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1956,12 +2055,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17752687/09e00754297e4d81aa6ad44f7938905f-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158662",
       "title": "Три шоколада",
-      "description": "",
+      "description": "Десерт «Три шоколада». Для тех, кому одного шоколадного вкуса мало.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1970,12 +2070,13 @@
       "sourceImageUrl": "https://eda.yandex/images/17751752/dfbee64bbf3f41bc8d3c4fd486b0b9a7-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     },
     {
       "id": "ya-3031158659",
       "title": "Ореховая бомба",
-      "description": "",
+      "description": "«Ореховая бомба» - десерт для любителей орехов. Можно взять к чаю или после горячего.",
       "price": 490.0,
       "promoPrice": 392.0,
       "weight": "100 г",
@@ -1984,7 +2085,11 @@
       "sourceImageUrl": "https://eda.yandex/images/20193126/457c386e8b644895aa9eaacd4d616fb1-400x400nocrop.jpeg",
       "ingredients": "",
       "available": false,
-      "optionsGroups": []
+      "optionsGroups": [],
+      "sourceDescription": ""
     }
+  ],
+  "excludedDishIds": [
+    "ya-3034193646"
   ]
 }

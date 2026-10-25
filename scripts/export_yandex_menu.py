@@ -12,6 +12,23 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = "https://eda.yandex.ru/r/xorovac?placeSlug=xorovac_wbm8q"
 API = "https://eda.yandex.ru/api/v2/menu/retrieve/xorovac_wbm8q"
+EDITORIAL = ROOT / "scripts/menu_editorial.json"
+
+
+def apply_editorial(menu):
+    editorial = json.loads(EDITORIAL.read_text())
+    excluded = set(editorial["excludedDishIds"])
+    menu["excludedDishIds"] = sorted(excluded)
+    dishes = []
+    for dish in menu["dishes"]:
+        if dish["id"] in excluded:
+            continue
+        dish.setdefault("sourceDescription", dish["description"])
+        if dish["id"] in editorial["descriptions"]:
+            dish["description"] = editorial["descriptions"][dish["id"]]
+        dishes.append(dish)
+    menu["dishes"] = dishes
+    return menu
 
 
 def fetch(url):
@@ -54,10 +71,10 @@ def export(raw):
             })
     if not categories or not dishes:
         raise ValueError("Empty menu: source format may have changed")
-    return {"sourceUrl": SOURCE, "sourceApi": API,
+    return apply_editorial({"sourceUrl": SOURCE, "sourceApi": API,
             "capturedAt": datetime.now(timezone.utc).isoformat(),
             "sourceSha256": hashlib.sha256(json.dumps(raw, sort_keys=True).encode()).hexdigest(),
-            "categories": categories, "dishes": dishes}
+            "categories": categories, "dishes": dishes})
 
 
 def main():

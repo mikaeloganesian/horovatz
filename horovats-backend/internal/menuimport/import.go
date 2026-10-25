@@ -31,9 +31,10 @@ type sourceDish struct {
 }
 
 type Plan struct {
-	Categories []models.Category
-	Dishes     []models.Dish
-	Skipped    int
+	Categories    []models.Category
+	Dishes        []models.Dish
+	Skipped       int
+	RemoveDishIDs []string
 }
 
 func Load(priceMode string, includeUnavailable bool) (Plan, error) {
@@ -41,13 +42,29 @@ func Load(priceMode string, includeUnavailable bool) (Plan, error) {
 		return Plan{}, fmt.Errorf("price must be regular or promo")
 	}
 	var data struct {
-		Categories []sourceCategory `json:"categories"`
-		Dishes     []sourceDish     `json:"dishes"`
+		Categories      []sourceCategory `json:"categories"`
+		Dishes          []sourceDish     `json:"dishes"`
+		ExcludedDishIDs []string         `json:"excludedDishIds"`
 	}
 	if err := json.Unmarshal(snapshot, &data); err != nil {
 		return Plan{}, err
 	}
-	return prepare(data.Categories, data.Dishes, priceMode, includeUnavailable)
+	plan, err := prepare(data.Categories, data.Dishes, priceMode, includeUnavailable)
+	if err != nil {
+		return Plan{}, err
+	}
+	for _, id := range data.ExcludedDishIDs {
+		if !strings.HasPrefix(id, "ya-") || len(id) <= 3 {
+			return Plan{}, fmt.Errorf("invalid excluded dish ID %q", id)
+		}
+		for _, dish := range plan.Dishes {
+			if dish.ID == id {
+				return Plan{}, fmt.Errorf("excluded dish %q is still in the menu", id)
+			}
+		}
+	}
+	plan.RemoveDishIDs = data.ExcludedDishIDs
+	return plan, nil
 }
 
 func prepare(categories []sourceCategory, dishes []sourceDish, priceMode string, includeUnavailable bool) (Plan, error) {
@@ -93,6 +110,15 @@ func prepare(categories []sourceCategory, dishes []sourceDish, priceMode string,
 // Apply always takes a consistent SQLite backup before changing the menu.
 // Existing recommendations survive an upsert; a replacement intentionally clears them.
 func Apply(db *gorm.DB, dbPath string, plan Plan, replace bool) (string, error) {
+	return apply(db, dbPath, plan, replace, false)
+}
+
+// ApplyDescriptions changes only descriptions of existing dishes and explicit removals.
+func ApplyDescriptions(db *gorm.DB, dbPath string, plan Plan) (string, error) {
+	return apply(db, dbPath, plan, false, true)
+}
+
+func apply(db *gorm.DB, dbPath string, plan Plan, replace, descriptionsOnly bool) (string, error) {
 	if len(plan.Categories) == 0 || len(plan.Dishes) == 0 {
 		return "", fmt.Errorf("refusing empty menu")
 	}
@@ -109,6 +135,23 @@ func Apply(db *gorm.DB, dbPath string, plan Plan, replace bool) (string, error) 
 		return backup, err
 	}
 	err = db.Transaction(func(tx *gorm.DB) error {
+		if len(plan.RemoveDishIDs) > 0 {
+			if err := tx.Where("id IN ?", plan.RemoveDishIDs).Delete(&models.Dish{}).Error; err != nil {
+				return err
+			}
+			// Recommendations to a removed dish must not point to a missing record.
+			if err := tx.Model(&models.Dish{}).Where("recommended_dish_id IN ?", plan.RemoveDishIDs).Update("recommended_dish_id", "").Error; err != nil {
+				return err
+			}
+		}
+		if descriptionsOnly {
+			for _, dish := range plan.Dishes {
+				if err := tx.Model(&models.Dish{}).Where("id = ?", dish.ID).Update("description", dish.Description).Error; err != nil {
+					return err
+				}
+			}
+			return nil
+		}
 		if replace {
 			if err := tx.Session(&gorm.Session{AllowGlobalUpdate: true}).Delete(&models.Dish{}).Error; err != nil {
 				return err

@@ -19,12 +19,22 @@ func main() {
 	replace := flag.Bool("replace-menu", false, "replace all existing categories and dishes; accounts and orders are preserved")
 	price := flag.String("price", "regular", "regular or promo; the website's loyalty discounts still apply")
 	include := flag.Bool("include-unavailable", false, "also publish unavailable source dishes")
+	descriptionsOnly := flag.Bool("descriptions-only", false, "update descriptions of existing dishes and remove explicitly excluded IDs; preserve prices and other fields")
 	flag.Parse()
+	if *descriptionsOnly && *replace {
+		log.Fatal("--descriptions-only cannot be combined with --replace-menu")
+	}
 	plan, err := menuimport.Load(*price, *include)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Categories: %d; dishes: %d; unavailable skipped: %d; prices: %s; replace menu: %t\n", len(plan.Categories), len(plan.Dishes), plan.Skipped, *price, *replace)
+	if len(plan.RemoveDishIDs) > 0 {
+		fmt.Printf("Explicitly excluded dishes to remove: %v\n", plan.RemoveDishIDs)
+	}
+	if *descriptionsOnly {
+		fmt.Println("Descriptions only: existing dishes are updated; missing dishes are not created.")
+	}
 	if !*apply {
 		fmt.Println("Preview only. Add --apply to import; --replace-menu also removes the previous menu.")
 		return
@@ -42,7 +52,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	backup, err := menuimport.Apply(db, abs, plan, *replace)
+	var backup string
+	if *descriptionsOnly {
+		backup, err = menuimport.ApplyDescriptions(db, abs, plan)
+	} else {
+		backup, err = menuimport.Apply(db, abs, plan, *replace)
+	}
 	if backup != "" {
 		fmt.Println("Backup:", backup)
 	}
