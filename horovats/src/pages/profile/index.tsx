@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/StoreContext';
 import { Navigate } from 'react-router-dom';
 import { getImageUrl } from '../../utils/image';
-import MapPicker from '../../components/MapPicker';
+import MapPicker from '../../components/MapPicker/LazyMapPicker';
 import { orderStatusLabel } from '../../utils/orderStatus';
 import './Profile.css';
 

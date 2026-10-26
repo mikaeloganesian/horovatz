@@ -1,8 +1,12 @@
 import { type FC, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
+import { MapContainer, Marker, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import { maplibreGL } from '@maplibre/maplibre-gl-leaflet';
+import { setWorkerUrl } from 'maplibre-gl';
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'leaflet/dist/leaflet.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -17,20 +21,27 @@ const DefaultIcon = L.icon({
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
+setWorkerUrl(workerUrl);
 
 /** Район ресторана — ул. Сергия Радонежского */
 const DEFAULT_CENTER: [number, number] = [55.748, 37.6745];
 
-/** Carto tiles — без политической символики в атрибуции OSM tile-серверов */
-const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-const TILE_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
+const MAP_STYLE = 'https://tiles.openfreemap.org/styles/liberty';
 
-interface MapPickerProps {
+export interface MapPickerProps {
   onAddressSelect: (address: string) => void;
   initialAddress?: string;
   onClose: () => void;
 }
+
+const OpenFreeMapLayer: FC = () => {
+  const map = useMap();
+  useEffect(() => {
+    const layer = maplibreGL({ style: MAP_STYLE }).addTo(map);
+    return () => { layer.remove(); };
+  }, [map]);
+  return null;
+};
 
 const MapFix: FC = () => {
   const map = useMap();
@@ -91,9 +102,9 @@ const MapPicker: FC<MapPickerProps> = ({ onAddressSelect, onClose }) => {
         </div>
 
         <div className="map-picker-map map-picker-map--leaflet">
-          <MapContainer center={DEFAULT_CENTER} zoom={15} className="map-picker-leaflet">
+          <MapContainer center={DEFAULT_CENTER} zoom={15} maxZoom={20} className="map-picker-leaflet">
             <MapFix />
-            <TileLayer attribution={TILE_ATTRIBUTION} url={TILE_URL} subdomains="abcd" maxZoom={20} />
+            <OpenFreeMapLayer />
             <LocationMarker position={position} onPick={handlePick} />
           </MapContainer>
         </div>
