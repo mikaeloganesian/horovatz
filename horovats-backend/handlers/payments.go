@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"context"
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
@@ -138,20 +137,6 @@ func applyVerifiedPayment(order *models.Order, payment *yookassa.Payment) error 
 	return nil
 }
 
-func refreshOrderPayment(ctx context.Context, order *models.Order) error {
-	if !ykClient.Enabled() || order.YookassaPaymentID == "" || (order.Status != "pending_payment" && order.Status != "payment_canceled") {
-		return nil
-	}
-	payment, err := ykClient.GetPaymentContext(ctx, order.YookassaPaymentID)
-	if err != nil {
-		return err
-	}
-	if err = applyVerifiedPayment(order, payment); err != nil {
-		return err
-	}
-	return database.DB.First(order, order.ID).Error
-}
-
 // GetOrderPaymentStatus — публичная проверка статуса оплаты по orderId + token.
 func GetOrderPaymentStatus(c *gin.Context) {
 	orderID, err := strconv.ParseUint(c.Param("id"), 10, 64)
@@ -176,11 +161,6 @@ func GetOrderPaymentStatus(c *gin.Context) {
 	}
 
 	c.Header("Cache-Control", "no-store")
-	if err := refreshOrderPayment(c.Request.Context(), &order); err != nil {
-		log.Printf("refresh payment status order %d: %v", order.ID, err)
-		c.JSON(http.StatusBadGateway, gin.H{"error": "Не удалось проверить оплату в ЮKassa. Повторяем проверку."})
-		return
-	}
 
 	c.JSON(http.StatusOK, gin.H{
 		"orderId":       order.ID,
@@ -267,6 +247,14 @@ func YookassaWebhook(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
 		return
 	}
+	if note.Type != "notification" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid notification type"})
+		return
+	}
+	if note.Event != "payment.succeeded" && note.Event != "payment.canceled" {
+		c.JSON(http.StatusOK, gin.H{"status": "ignored"})
+		return
+	}
 
 	paymentID := strings.TrimSpace(note.Object.ID)
 	if paymentID == "" {
@@ -274,7 +262,8 @@ func YookassaWebhook(c *gin.Context) {
 		return
 	}
 
-	payment, err := ykClient.GetPayment(paymentID)
+	log.Printf("yookassa webhook received: event=%s payment=%s", note.Event, paymentID)
+	payment, err := ykClient.GetPaymentContext(c.Request.Context(), paymentID)
 	if err != nil {
 		log.Printf("yookassa webhook verify payment %s: %v", paymentID, err)
 		c.JSON(http.StatusBadGateway, gin.H{"error": "payment verify failed"})
@@ -291,13 +280,25 @@ func YookassaWebhook(c *gin.Context) {
 
 	var order models.Order
 	if err := database.DB.First(&order, orderID).Error; err != nil {
-		log.Printf("yookassa webhook: order %d not found", orderID)
-		c.JSON(http.StatusOK, gin.H{"status": "ignored"})
+		log.Printf("yookassa webhook: order %d unavailable; requesting redelivery", orderID)
+		c.JSON(http.StatusServiceUnavailable, gin.H{"error": "order unavailable; retry notification"})
+		return
+	}
+	// A notification may arrive before create-payment saves its response.
+	// Do not acknowledge it until the payment has been attached to the order.
+	if order.YookassaPaymentID == "" {
+		log.Printf("yookassa webhook: order %d payment not attached yet; requesting redelivery", orderID)
+		c.JSON(http.StatusServiceUnavailable, gin.H{"error": "payment not attached; retry notification"})
 		return
 	}
 
 	if order.YookassaPaymentID != payment.ID {
+		log.Printf("yookassa webhook: ignored superseded payment for order %d", orderID)
 		c.JSON(http.StatusOK, gin.H{"status": "ignored"})
+		return
+	}
+	if payment.Status != "succeeded" && payment.Status != "canceled" {
+		c.JSON(http.StatusServiceUnavailable, gin.H{"error": "payment not final; retry notification"})
 		return
 	}
 	if err := applyVerifiedPayment(&order, payment); err != nil {
@@ -306,5 +307,6 @@ func YookassaWebhook(c *gin.Context) {
 		return
 	}
 
+	log.Printf("yookassa webhook processed: order=%d payment=%s status=%s", orderID, paymentID, payment.Status)
 	c.JSON(http.StatusOK, gin.H{"status": "ok"})
 }
