@@ -4,7 +4,6 @@ import { observer } from 'mobx-react-lite';
 import { useStore } from '../../context/StoreContext';
 import {
   clearPendingPayment,
-  isOrderPaid,
   loadPendingPayment,
   orderStatusLabel,
   savePendingPayment,
@@ -19,6 +18,7 @@ const PaymentReturnPage: FC = observer(() => {
   const [searchParams] = useSearchParams();
   const [state, setState] = useState<PageState>('loading');
   const [retrying, setRetrying] = useState(false);
+  const [checkVersion, setCheckVersion] = useState(0);
 
   const orderId = Number(searchParams.get('orderId') || loadPendingPayment()?.orderId || 0);
   const token = searchParams.get('token') || loadPendingPayment()?.token || '';
@@ -30,9 +30,16 @@ const PaymentReturnPage: FC = observer(() => {
     }
 
     savePendingPayment({ orderId, token });
+    setState('loading');
+    orderStore.clearError();
 
     let cancelled = false;
     let attempts = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const schedule = () => {
+      if (attempts >= 15) setState('pending');
+      timer = setTimeout(poll, attempts >= 15 ? 5000 : 2000);
+    };
 
     const poll = async () => {
       attempts += 1;
@@ -40,12 +47,11 @@ const PaymentReturnPage: FC = observer(() => {
       if (cancelled) return;
 
       if (!result) {
-        if (attempts >= 15) setState('pending');
-        else setTimeout(poll, 2000);
+        schedule();
         return;
       }
 
-      if (isOrderPaid(result.status)) {
+      if (result.paymentStatus === 'succeeded') {
         clearPendingPayment();
         cartStore.clearCart();
         setState('success');
@@ -57,18 +63,15 @@ const PaymentReturnPage: FC = observer(() => {
         return;
       }
 
-      if (attempts < 15) {
-        setTimeout(poll, 2000);
-      } else {
-        setState('pending');
-      }
+      schedule();
     };
 
     void poll();
     return () => {
       cancelled = true;
+      if (timer) clearTimeout(timer);
     };
-  }, [orderId, token, orderStore, cartStore]);
+  }, [orderId, token, orderStore, cartStore, checkVersion]);
 
   const handleRetry = async () => {
     if (!orderId || !token) return;
@@ -86,7 +89,7 @@ const PaymentReturnPage: FC = observer(() => {
     loading: 'Проверяем статус оплаты…',
     success: 'Оплата прошла успешно! Мы свяжемся с вами для подтверждения доставки.',
     failed: 'Оплата не завершена. Вы можете попробовать снова.',
-    pending: 'Оплата обрабатывается. Если деньги списались — мы подтвердим заказ по телефону.',
+    pending: 'Проверка оплаты занимает чуть больше времени. Продолжаем проверять статус - повторно оплачивать заказ не нужно.',
   };
 
   return (
@@ -119,9 +122,14 @@ const PaymentReturnPage: FC = observer(() => {
             </>
           )}
           {state === 'pending' && (
-            <button type="button" className="payment-return-btn payment-return-btn--primary" onClick={goNext}>
-              Понятно
-            </button>
+            <>
+              <button type="button" className="payment-return-btn payment-return-btn--ghost" onClick={() => setCheckVersion(value => value + 1)}>
+                Проверить сейчас
+              </button>
+              <button type="button" className="payment-return-btn payment-return-btn--primary" onClick={goNext}>
+                Понятно
+              </button>
+            </>
           )}
         </div>
 

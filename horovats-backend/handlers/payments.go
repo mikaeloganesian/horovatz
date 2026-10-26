@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"context"
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
@@ -92,6 +93,9 @@ func markOrderPaid(order *models.Order, paymentID string) error {
 		if err := tx.Preload("Items").First(&current, order.ID).Error; err != nil {
 			return err
 		}
+		if current.YookassaPaymentID != "" && current.YookassaPaymentID != paymentID {
+			return fmt.Errorf("payment changed during confirmation")
+		}
 		// A create-payment response can already contain succeeded before its webhook.
 		// In that case the fulfillment status still needs advancing and notifying.
 		if current.PaymentStatus == "succeeded" && current.Status != "pending_payment" && current.Status != "payment_canceled" {
@@ -109,11 +113,43 @@ func markOrderPaid(order *models.Order, paymentID string) error {
 }
 
 func markOrderPaymentCanceled(order *models.Order, paymentID string) error {
-	return database.DB.Model(order).Updates(map[string]any{
+	return database.DB.Model(order).Where("yookassa_payment_id = ? AND payment_status <> ? AND status IN ?", paymentID, "succeeded", []string{"pending_payment", "payment_canceled"}).Updates(map[string]any{
 		"status":              "payment_canceled",
 		"payment_status":      "canceled",
 		"yookassa_payment_id": paymentID,
 	}).Error
+}
+
+// applyVerifiedPayment accepts only the current payment and the exact order amount.
+// paid=true alone can mean authorization without capture; only succeeded is final.
+func applyVerifiedPayment(order *models.Order, payment *yookassa.Payment) error {
+	if payment.ID != order.YookassaPaymentID || payment.Metadata["order_id"] != strconv.FormatUint(uint64(order.ID), 10) || payment.Amount.Currency != "RUB" || payment.Amount.Value != yookassa.FormatAmount(order.TotalPrice) {
+		return fmt.Errorf("payment does not match order")
+	}
+	switch payment.Status {
+	case "succeeded":
+		if !payment.Paid {
+			return fmt.Errorf("succeeded payment is not marked paid")
+		}
+		return markOrderPaid(order, payment.ID)
+	case "canceled":
+		return markOrderPaymentCanceled(order, payment.ID)
+	}
+	return nil
+}
+
+func refreshOrderPayment(ctx context.Context, order *models.Order) error {
+	if !ykClient.Enabled() || order.YookassaPaymentID == "" || (order.Status != "pending_payment" && order.Status != "payment_canceled") {
+		return nil
+	}
+	payment, err := ykClient.GetPaymentContext(ctx, order.YookassaPaymentID)
+	if err != nil {
+		return err
+	}
+	if err = applyVerifiedPayment(order, payment); err != nil {
+		return err
+	}
+	return database.DB.First(order, order.ID).Error
 }
 
 // GetOrderPaymentStatus — публичная проверка статуса оплаты по orderId + token.
@@ -136,6 +172,13 @@ func GetOrderPaymentStatus(c *gin.Context) {
 	}
 	if order.PaymentToken != token {
 		c.JSON(http.StatusForbidden, gin.H{"error": "Доступ запрещён"})
+		return
+	}
+
+	c.Header("Cache-Control", "no-store")
+	if err := refreshOrderPayment(c.Request.Context(), &order); err != nil {
+		log.Printf("refresh payment status order %d: %v", order.ID, err)
+		c.JSON(http.StatusBadGateway, gin.H{"error": "Не удалось проверить оплату в ЮKassa. Повторяем проверку."})
 		return
 	}
 
@@ -239,9 +282,6 @@ func YookassaWebhook(c *gin.Context) {
 	}
 
 	orderIDStr := payment.Metadata["order_id"]
-	if orderIDStr == "" {
-		orderIDStr = note.Object.Metadata["order_id"]
-	}
 	orderID, err := strconv.ParseUint(orderIDStr, 10, 64)
 	if err != nil || orderID == 0 {
 		log.Printf("yookassa webhook: missing order_id for payment %s", paymentID)
@@ -256,21 +296,14 @@ func YookassaWebhook(c *gin.Context) {
 		return
 	}
 
-	switch note.Event {
-	case "payment.succeeded":
-		if payment.Status == "succeeded" || payment.Paid {
-			if err := markOrderPaid(&order, paymentID); err != nil {
-				log.Printf("mark order paid %d: %v", orderID, err)
-				c.JSON(http.StatusInternalServerError, gin.H{"error": "update failed"})
-				return
-			}
-		}
-	case "payment.canceled":
-		if err := markOrderPaymentCanceled(&order, paymentID); err != nil {
-			log.Printf("mark order canceled %d: %v", orderID, err)
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "update failed"})
-			return
-		}
+	if order.YookassaPaymentID != payment.ID {
+		c.JSON(http.StatusOK, gin.H{"status": "ignored"})
+		return
+	}
+	if err := applyVerifiedPayment(&order, payment); err != nil {
+		log.Printf("apply verified payment order %d: %v", orderID, err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "update failed"})
+		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{"status": "ok"})

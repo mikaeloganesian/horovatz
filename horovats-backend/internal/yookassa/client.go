@@ -2,11 +2,13 @@ package yookassa
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
 const apiBase = "https://api.yookassa.ru/v3"
@@ -57,9 +59,10 @@ type CreatePaymentRequest struct {
 }
 
 type Payment struct {
-	ID     string `json:"id"`
-	Status string `json:"status"`
-	Paid   bool   `json:"paid"`
+	ID           string `json:"id"`
+	Status       string `json:"status"`
+	Paid         bool   `json:"paid"`
+	Amount       Amount `json:"amount"`
 	Confirmation struct {
 		ConfirmationURL string `json:"confirmation_url"`
 	} `json:"confirmation"`
@@ -77,7 +80,7 @@ func NewFromEnv() *Client {
 	return &Client{
 		ShopID:     os.Getenv("YOOKASSA_SHOP_ID"),
 		SecretKey:  os.Getenv("YOOKASSA_SECRET_KEY"),
-		HTTPClient: http.DefaultClient,
+		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 	}
 }
 
@@ -104,7 +107,15 @@ func (c *Client) GetPayment(paymentID string) (*Payment, error) {
 	return c.doPayment(http.MethodGet, "/payments/"+paymentID, "", nil)
 }
 
+func (c *Client) GetPaymentContext(ctx context.Context, paymentID string) (*Payment, error) {
+	return c.doPaymentContext(ctx, http.MethodGet, "/payments/"+paymentID, "", nil)
+}
+
 func (c *Client) doPayment(method, path, idempotenceKey string, body any) (*Payment, error) {
+	return c.doPaymentContext(context.Background(), method, path, idempotenceKey, body)
+}
+
+func (c *Client) doPaymentContext(ctx context.Context, method, path, idempotenceKey string, body any) (*Payment, error) {
 	var reqBody io.Reader
 	if body != nil {
 		raw, err := json.Marshal(body)
@@ -114,7 +125,7 @@ func (c *Client) doPayment(method, path, idempotenceKey string, body any) (*Paym
 		reqBody = bytes.NewReader(raw)
 	}
 
-	req, err := http.NewRequest(method, apiBase+path, reqBody)
+	req, err := http.NewRequestWithContext(ctx, method, apiBase+path, reqBody)
 	if err != nil {
 		return nil, err
 	}
