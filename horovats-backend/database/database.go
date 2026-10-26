@@ -14,12 +14,12 @@ var DB *gorm.DB
 
 func InitDB() {
 	var err error
-	DB, err = gorm.Open(sqlite.Open("horovats.db"), &gorm.Config{})
+	DB, err = gorm.Open(sqlite.Open("horovats.db?_busy_timeout=5000"), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
-	err = DB.AutoMigrate(&models.User{}, &models.Category{}, &models.Dish{}, &models.Order{}, &models.OrderItem{})
+	err = DB.AutoMigrate(&models.User{}, &models.Category{}, &models.Dish{}, &models.Order{}, &models.OrderItem{}, &models.OrderNotification{})
 	if err != nil {
 		log.Fatalf("Failed to auto-migrate database: %v", err)
 	}

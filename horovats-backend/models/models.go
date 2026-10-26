@@ -31,16 +31,16 @@ type Category struct {
 }
 
 type Dish struct {
-	ID             string  `gorm:"primaryKey" json:"id"`
-	Title          string  `json:"title"`
-	Description    string  `json:"description"`
-	Price          float64 `json:"price"`
-	Weight         string  `json:"weight"`
-	CategoryID     string  `gorm:"index" json:"categoryId"`
-	ImageURL       string  `json:"imageUrl"`
-	Ingredients    string  `json:"ingredients"`
-	Recommendation string  `json:"recommendation"`
-	RecommendedDishID string `gorm:"index" json:"recommendedDishId"`
+	ID                string  `gorm:"primaryKey" json:"id"`
+	Title             string  `json:"title"`
+	Description       string  `json:"description"`
+	Price             float64 `json:"price"`
+	Weight            string  `json:"weight"`
+	CategoryID        string  `gorm:"index" json:"categoryId"`
+	ImageURL          string  `json:"imageUrl"`
+	Ingredients       string  `json:"ingredients"`
+	Recommendation    string  `json:"recommendation"`
+	RecommendedDishID string  `gorm:"index" json:"recommendedDishId"`
 }
 
 type Order struct {
@@ -60,11 +60,24 @@ type Order struct {
 }
 
 type OrderItem struct {
-	ID         uint    `gorm:"primaryKey" json:"id"`
-	OrderID    uint    `gorm:"index" json:"orderId"`
-	DishID     string  `json:"dishId"`
-	DishTitle  string  `json:"dishTitle"`
-	Quantity   int     `json:"quantity"`
-	Price      float64 `json:"price"`
-	ImageUrl   string  `json:"imageUrl"`
+	ID        uint    `gorm:"primaryKey" json:"id"`
+	OrderID   uint    `gorm:"index" json:"orderId"`
+	DishID    string  `json:"dishId"`
+	DishTitle string  `json:"dishTitle"`
+	Quantity  int     `json:"quantity"`
+	Price     float64 `json:"price"`
+	ImageUrl  string  `json:"imageUrl"`
+}
+
+// OrderNotification is a durable Telegram outbox. The unique key deduplicates events.
+type OrderNotification struct {
+	ID            uint   `gorm:"primaryKey"`
+	EventKey      string `gorm:"uniqueIndex;not null"`
+	OrderID       uint   `gorm:"index;not null"`
+	Text          string `gorm:"not null"`
+	Attempts      int
+	NextAttemptAt time.Time `gorm:"index"`
+	LockedUntil   time.Time
+	SentAt        *time.Time `gorm:"index"`
+	CreatedAt     time.Time
 }

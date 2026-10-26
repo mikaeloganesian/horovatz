@@ -8,6 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/horovats/backend/database"
+	"github.com/horovats/backend/internal/telegram"
 	"github.com/horovats/backend/middleware"
 	"github.com/horovats/backend/models"
 	"gorm.io/gorm"
@@ -164,7 +165,8 @@ func CreateOrder(c *gin.Context) {
 				return err
 			}
 		}
-		return nil
+		order.Items = orderItems
+		return orderNotifier.Enqueue(tx, &order, telegram.Created)
 	})
 
 	if err != nil {

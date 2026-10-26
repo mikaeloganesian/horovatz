@@ -12,8 +12,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/horovats/backend/database"
+	"github.com/horovats/backend/internal/telegram"
 	"github.com/horovats/backend/internal/yookassa"
 	"github.com/horovats/backend/models"
+	"gorm.io/gorm"
 )
 
 var ykClient = yookassa.NewFromEnv()
@@ -85,14 +87,25 @@ func createYookassaPayment(order *models.Order, token string, idempotenceKey str
 }
 
 func markOrderPaid(order *models.Order, paymentID string) error {
-	if order.Status == "new" || order.Status == "processing" || order.Status == "completed" {
-		return nil
-	}
-	return database.DB.Model(order).Updates(map[string]any{
-		"status":              "new",
-		"payment_status":      "succeeded",
-		"yookassa_payment_id": paymentID,
-	}).Error
+	return database.DB.Transaction(func(tx *gorm.DB) error {
+		var current models.Order
+		if err := tx.Preload("Items").First(&current, order.ID).Error; err != nil {
+			return err
+		}
+		// A create-payment response can already contain succeeded before its webhook.
+		// In that case the fulfillment status still needs advancing and notifying.
+		if current.PaymentStatus == "succeeded" && current.Status != "pending_payment" && current.Status != "payment_canceled" {
+			return nil
+		}
+		updates := map[string]any{"payment_status": "succeeded", "yookassa_payment_id": paymentID}
+		if current.Status == "pending_payment" || current.Status == "payment_canceled" {
+			updates["status"] = "new"
+		}
+		if err := tx.Model(&current).Updates(updates).Error; err != nil {
+			return err
+		}
+		return orderNotifier.Enqueue(tx, &current, telegram.Paid)
+	})
 }
 
 func markOrderPaymentCanceled(order *models.Order, paymentID string) error {
@@ -184,13 +197,13 @@ func RetryOrderPayment(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"confirmationUrl": confirmationURL,
-		"orderId":       order.ID,
+		"orderId":         order.ID,
 	})
 }
 
 type yookassaWebhookNotification struct {
-	Type  string `json:"type"`
-	Event string `json:"event"`
+	Type   string `json:"type"`
+	Event  string `json:"event"`
 	Object struct {
 		ID       string            `json:"id"`
 		Status   string            `json:"status"`

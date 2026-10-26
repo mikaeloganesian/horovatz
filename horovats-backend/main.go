@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net/http"
 	"os"
@@ -25,6 +26,7 @@ func main() {
 	}
 
 	database.InitDB()
+	handlers.StartOrderNotifications(context.Background())
 
 	// Ensure uploads directory exists
 	if err := os.MkdirAll("./uploads", os.ModePerm); err != nil {
