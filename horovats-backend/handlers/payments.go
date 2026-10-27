@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"context"
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
@@ -161,6 +162,30 @@ func GetOrderPaymentStatus(c *gin.Context) {
 	}
 
 	c.Header("Cache-Control", "no-store")
+	// Reconcile unfinished payments independently of webhook delivery. The token
+	// is checked before contacting YooKassa; final payments stay local.
+	if ykClient.Enabled() && order.YookassaPaymentID != "" &&
+		(order.PaymentStatus == "pending" || order.PaymentStatus == "waiting_for_capture" ||
+			(order.PaymentStatus == "succeeded" && order.Status == "pending_payment")) {
+		ctx, cancel := context.WithTimeout(c.Request.Context(), 5*time.Second)
+		defer cancel()
+		payment, err := ykClient.GetPaymentContext(ctx, order.YookassaPaymentID)
+		if err != nil {
+			log.Printf("yookassa status verify order %d: %v", order.ID, err)
+			c.JSON(http.StatusBadGateway, gin.H{"error": "Не удалось проверить платёж. Попробуйте ещё раз"})
+			return
+		}
+		if err := applyVerifiedPayment(&order, payment); err != nil {
+			log.Printf("yookassa status apply order %d: %v", order.ID, err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Не удалось обновить статус оплаты"})
+			return
+		}
+		// Reload after reconciliation so concurrent webhook updates are visible.
+		if err := database.DB.First(&order, order.ID).Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Не удалось получить статус заказа"})
+			return
+		}
+	}
 
 	c.JSON(http.StatusOK, gin.H{
 		"orderId":       order.ID,
